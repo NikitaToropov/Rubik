@@ -1,17 +1,23 @@
 package cube;
 
+import com.sun.xml.internal.bind.v2.runtime.Coordinator;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class SmallCube {
+    public final Coordinate coordinate;
     /*
     Ключ - сторона относительно зрителя.
     Значение - где должна стоять ячейка.
      */
     public final Map<Sides, Sides> faces;
 
-    public SmallCube(Map<Sides, Sides> faces) {
+
+    public SmallCube(Map<Sides, Sides> faces, Coordinate coordinate)
+    {
         this.faces = faces;
+        this.coordinate = coordinate;
     }
 
     public SmallCube rotateFront() {
@@ -32,6 +38,8 @@ public class SmallCube {
         if ((face = faces.get(Sides.L)) != null) {
             newFaces.put(Sides.U, face);
         }
+
+        int x = 
 
         return new SmallCube(newFaces);
     }

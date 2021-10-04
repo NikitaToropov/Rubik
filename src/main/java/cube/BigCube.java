@@ -1,16 +1,19 @@
 package cube;
 
+import java.util.Set;
+
 /**
  * Сторона куба и матрица его ячеек.
  * TODO если код расширяемый, то нужно определять его ценртальную ячейку.
  */
 public class BigCube {
-    public final BigCube side;
-    public final SmallCube[][][] cube3d;
+    public final int size;
+    public final BigCube parent;
+    public final Set<SmallCube> cubes;
 
-
-    public BigCube(BigCube side, SmallCube[][][] cube3d) {
-        this.side = side;
-        this.cube3d = cube3d;
+    public BigCube(BigCube parent, Set<SmallCube> cubes, int size) {
+        this.parent = parent;
+        this.cubes = cubes;
+        this.size = size;
     }
 }

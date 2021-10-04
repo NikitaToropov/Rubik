@@ -2,6 +2,7 @@ package cube;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class SmallCube {
     public final Coordinate coordinate;
@@ -11,10 +12,23 @@ public class SmallCube {
      */
     public final Map<Sides, Sides> faces;
 
-
     public SmallCube(Map<Sides, Sides> faces, Coordinate coordinate) {
         this.faces = faces;
         this.coordinate = coordinate;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SmallCube smallCube = (SmallCube) o;
+        return coordinate.equals(smallCube.coordinate) && faces.equals(smallCube.faces);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(coordinate, faces);
     }
 
     public SmallCube rotateFront() {

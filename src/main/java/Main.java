@@ -7,11 +7,12 @@ public class Main {
     public static void main(String[] args) {
         BigCube bigCube = BigCubeGenerator.generateBigCube();
         BigCubePrinter.print(bigCube);
+        BigCube another = BigCubeRotator.rotateBack(bigCube);
+        another = BigCubeRotator.rotateBack(another);
+        another = BigCubeRotator.rotateBack(another);
+        another = BigCubeRotator.rotateBack(another);
+        BigCubePrinter.print(another);
 
-        BigCube rotatedFront = BigCubeRotator.rotateUp(bigCube);
-        BigCubePrinter.print(rotatedFront);
-
-        rotatedFront = BigCubeRotator.rotateFront(rotatedFront);
-        BigCubePrinter.print(rotatedFront);
+        System.out.println(bigCube.equals(another));
     }
 }

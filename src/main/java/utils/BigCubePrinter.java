@@ -5,6 +5,9 @@ import cube.Sides;
 
 public class BigCubePrinter {
 
+    private BigCubePrinter() {
+    }
+
     public static void print(BigCube cube) {
         Sides[][] front = getFrontSideMatrix(cube);
         Sides[][] left = getLeftSideMatrix(cube);
@@ -80,6 +83,7 @@ public class BigCubePrinter {
 
     /**
      * Метод для печати верхней или ниженей сторон.
+     *
      * @param matrix
      */
     private static void printUpOrDownSide(Sides[][] matrix) {
@@ -96,7 +100,8 @@ public class BigCubePrinter {
 
     /**
      * Метод для печати матриц с общим направлением 'Y':
-     * LEFT, FRONT, RIGHT, BACK.     */
+     * LEFT, FRONT, RIGHT, BACK.
+     */
     private static void printLeftFrontRightBackSides(Sides[][] left, Sides[][] front, Sides[][] right, Sides[][] back) {
         for (int y = 0; y < BigCubeGenerator.size; y++) {
             for (Sides[] sides : left) {

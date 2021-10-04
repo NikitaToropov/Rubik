@@ -3,9 +3,9 @@ package utils;
 import cube.BigCube;
 import cube.Sides;
 
-public class BigCubeUtil {
+public class BigCubePrinter {
 
-    public static void printBigCube(BigCube cube) {
+    public static void print(BigCube cube) {
         Sides[][] front = getFrontSideMatrix(cube);
         Sides[][] left = getLeftSideMatrix(cube);
         Sides[][] right = geRightSidesMatrix(cube);

@@ -19,6 +19,7 @@ public class SmallCube {
 
     public SmallCube rotateFront() {
         Map<Sides, Sides> newFaces = new HashMap<>();
+        newFaces.put(Sides.F, faces.get(Sides.F));
         Sides face;
         if ((face = faces.get(Sides.U)) != null) {
             newFaces.put(Sides.R, face);
@@ -45,6 +46,7 @@ public class SmallCube {
     public SmallCube rotateRight() {
         Map<Sides, Sides> newFaces = new HashMap<>();
         Sides face;
+        newFaces.put(Sides.R, faces.get(Sides.R));
         if ((face = faces.get(Sides.U)) != null) {
             newFaces.put(Sides.B, face);
         }
@@ -70,6 +72,7 @@ public class SmallCube {
     public SmallCube rotateDown() {
         Map<Sides, Sides> newFaces = new HashMap<>();
         Sides face;
+        newFaces.put(Sides.D, faces.get(Sides.D));
         if ((face = faces.get(Sides.F)) != null) {
             newFaces.put(Sides.R, face);
         }
@@ -94,6 +97,7 @@ public class SmallCube {
 
     public SmallCube rotateLeft() {
         Map<Sides, Sides> newFaces = new HashMap<>();
+        newFaces.put(Sides.L, faces.get(Sides.L));
         Sides face;
         if ((face = faces.get(Sides.F)) != null) {
             newFaces.put(Sides.D, face);
@@ -120,6 +124,7 @@ public class SmallCube {
     public SmallCube rotateUp() {
         Map<Sides, Sides> newFaces = new HashMap<>();
         Sides face;
+        newFaces.put(Sides.U, faces.get(Sides.U));
         if ((face = faces.get(Sides.F)) != null) {
             newFaces.put(Sides.L, face);
         }
@@ -145,6 +150,7 @@ public class SmallCube {
     public SmallCube rotateBack() {
         Map<Sides, Sides> newFaces = new HashMap<>();
         Sides face;
+        newFaces.put(Sides.B, faces.get(Sides.B));
         if ((face = faces.get(Sides.R)) != null) {
             newFaces.put(Sides.U, face);
         }

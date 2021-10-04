@@ -26,8 +26,8 @@ public class BigCubePrinter {
         Sides[][] matrix = new Sides[size][size];
 
         cube.cubes.stream()
-                .filter(c -> c.coordinate.y == BigCubeGenerator.maxY)
-                .forEach(c -> matrix[c.coordinate.x + BigCubeGenerator.maxX][BigCubeGenerator.size - 1 - (c.coordinate.z + BigCubeGenerator.maxZ)] = c.faces.get(Sides.U));
+                .filter(c -> c.coordinate.y == BigCube.maxY)
+                .forEach(c -> matrix[c.coordinate.x + BigCube.maxX][BigCube.size - 1 - (c.coordinate.z + BigCube.maxZ)] = c.faces.get(Sides.U));
         return matrix;
     }
 
@@ -36,8 +36,8 @@ public class BigCubePrinter {
         Sides[][] matrix = new Sides[size][size];
 
         cube.cubes.stream()
-                .filter(c -> c.coordinate.y == BigCubeGenerator.minY)
-                .forEach(c -> matrix[c.coordinate.x + BigCubeGenerator.maxX][c.coordinate.z + BigCubeGenerator.maxZ] = c.faces.get(Sides.D));
+                .filter(c -> c.coordinate.y == BigCube.minY)
+                .forEach(c -> matrix[c.coordinate.x + BigCube.maxX][c.coordinate.z + BigCube.maxZ] = c.faces.get(Sides.D));
         return matrix;
     }
 
@@ -46,8 +46,8 @@ public class BigCubePrinter {
         Sides[][] matrix = new Sides[size][size];
 
         cube.cubes.stream()
-                .filter(c -> c.coordinate.z == BigCubeGenerator.maxZ)
-                .forEach(c -> matrix[BigCubeGenerator.size - 1 - (c.coordinate.x + BigCubeGenerator.maxX)][BigCubeGenerator.size - 1 - (c.coordinate.y + BigCubeGenerator.maxY)] = c.faces.get(Sides.B));
+                .filter(c -> c.coordinate.z == BigCube.maxZ)
+                .forEach(c -> matrix[BigCube.size - 1 - (c.coordinate.x + BigCube.maxX)][BigCube.size - 1 - (c.coordinate.y + BigCube.maxY)] = c.faces.get(Sides.B));
         return matrix;
     }
 
@@ -56,8 +56,8 @@ public class BigCubePrinter {
         Sides[][] matrix = new Sides[size][size];
 
         cube.cubes.stream()
-                .filter(c -> c.coordinate.x == BigCubeGenerator.maxX)
-                .forEach(c -> matrix[c.coordinate.z + BigCubeGenerator.maxZ][BigCubeGenerator.size - 1 - (c.coordinate.y + BigCubeGenerator.maxY)] = c.faces.get(Sides.R));
+                .filter(c -> c.coordinate.x == BigCube.maxX)
+                .forEach(c -> matrix[c.coordinate.z + BigCube.maxZ][BigCube.size - 1 - (c.coordinate.y + BigCube.maxY)] = c.faces.get(Sides.R));
         return matrix;
     }
 
@@ -66,8 +66,8 @@ public class BigCubePrinter {
         Sides[][] matrix = new Sides[size][size];
 
         cube.cubes.stream()
-                .filter(c -> c.coordinate.z == BigCubeGenerator.minZ)
-                .forEach(c -> matrix[c.coordinate.x + BigCubeGenerator.maxX][BigCubeGenerator.size - 1 - (c.coordinate.y + BigCubeGenerator.maxY)] = c.faces.get(Sides.F));
+                .filter(c -> c.coordinate.z == BigCube.minZ)
+                .forEach(c -> matrix[c.coordinate.x + BigCube.maxX][BigCube.size - 1 - (c.coordinate.y + BigCube.maxY)] = c.faces.get(Sides.F));
         return matrix;
     }
 
@@ -76,8 +76,8 @@ public class BigCubePrinter {
         Sides[][] matrix = new Sides[size][size];
 
         cube.cubes.stream()
-                .filter(c -> c.coordinate.x == BigCubeGenerator.minX)
-                .forEach(c -> matrix[BigCubeGenerator.size - 1 - (c.coordinate.z + BigCubeGenerator.maxZ)][BigCubeGenerator.size - 1 - (c.coordinate.y + BigCubeGenerator.maxY)] = c.faces.get(Sides.L));
+                .filter(c -> c.coordinate.x == BigCube.minX)
+                .forEach(c -> matrix[BigCube.size - 1 - (c.coordinate.z + BigCube.maxZ)][BigCube.size - 1 - (c.coordinate.y + BigCube.maxY)] = c.faces.get(Sides.L));
         return matrix;
     }
 
@@ -88,7 +88,7 @@ public class BigCubePrinter {
      */
     private static void printUpOrDownSide(Sides[][] matrix) {
         System.out.println();
-        for (int i = 0; i < BigCubeGenerator.size; i++) {
+        for (int i = 0; i < BigCube.size; i++) {
             System.out.printf("%" + 7 + "s", " ");
             for (Sides[] sides : matrix) {
                 System.out.printf("%2s", sides[i]);
@@ -103,7 +103,7 @@ public class BigCubePrinter {
      * LEFT, FRONT, RIGHT, BACK.
      */
     private static void printLeftFrontRightBackSides(Sides[][] left, Sides[][] front, Sides[][] right, Sides[][] back) {
-        for (int y = 0; y < BigCubeGenerator.size; y++) {
+        for (int y = 0; y < BigCube.size; y++) {
             for (Sides[] sides : left) {
                 System.out.printf("%2s", sides[y]);
             }

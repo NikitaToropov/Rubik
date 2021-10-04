@@ -11,14 +11,19 @@ import java.util.Set;
  * TODO если код расширяемый, то нужно определять его ценртальную ячейку.
  */
 public class BigCube {
-    public final int size;
+    public static int size = 3;
+    public static int minX = -1;
+    public static int maxX = 1;
+    public static int minY = -1;
+    public static int maxY = 1;
+    public static int minZ = -1;
+    public static int maxZ = 1;
     public final BigCube parent;
     public final Set<SmallCube> cubes;
 
-    public BigCube(BigCube parent, Set<SmallCube> cubes, int size) {
+    public BigCube(BigCube parent, Set<SmallCube> cubes) {
         this.parent = parent;
         this.cubes = cubes;
-        this.size = size;
     }
 
     @Override
@@ -37,72 +42,72 @@ public class BigCube {
     public BigCube rotateLeft() {
         HashSet<SmallCube> smallCubes = new HashSet<>();
         cubes.forEach(c -> {
-            if (c.coordinate.x == BigCubeGenerator.minX) {
+            if (c.coordinate.x == minX) {
                 smallCubes.add(c.rotateLeft());
             } else {
                 smallCubes.add(c);
             }
         });
-        return new BigCube(this, smallCubes, size);
+        return new BigCube(this, smallCubes);
     }
 
     public BigCube rotateFront() {
         HashSet<SmallCube> smallCubes = new HashSet<>();
         cubes.forEach(c -> {
-            if (c.coordinate.z == BigCubeGenerator.minZ) {
+            if (c.coordinate.z == minZ) {
                 smallCubes.add(c.rotateFront());
             } else {
                 smallCubes.add(c);
             }
         });
-        return new BigCube(this, smallCubes, size);
+        return new BigCube(this, smallCubes);
     }
 
     public BigCube rotateRight() {
         HashSet<SmallCube> smallCubes = new HashSet<>();
         cubes.forEach(c -> {
-            if (c.coordinate.x == BigCubeGenerator.maxX) {
+            if (c.coordinate.x == maxX) {
                 smallCubes.add(c.rotateRight());
             } else {
                 smallCubes.add(c);
             }
         });
-        return new BigCube(this, smallCubes, size);
+        return new BigCube(this, smallCubes);
     }
 
     public BigCube rotateBack() {
         HashSet<SmallCube> smallCubes = new HashSet<>();
         cubes.forEach(c -> {
-            if (c.coordinate.z == BigCubeGenerator.maxZ) {
+            if (c.coordinate.z == maxZ) {
                 smallCubes.add(c.rotateBack());
             } else {
                 smallCubes.add(c);
             }
         });
-        return new BigCube(this, smallCubes, size);
+        return new BigCube(this, smallCubes);
     }
 
     public BigCube rotateUp() {
         HashSet<SmallCube> smallCubes = new HashSet<>();
         cubes.forEach(c -> {
-            if (c.coordinate.y == BigCubeGenerator.maxY) {
+            if (c.coordinate.y == maxY) {
                 smallCubes.add(c.rotateUp());
             } else {
                 smallCubes.add(c);
             }
         });
-        return new BigCube(this, smallCubes, size);
+        return new BigCube(this, smallCubes);
     }
 
     public BigCube rotateDown() {
         HashSet<SmallCube> smallCubes = new HashSet<>();
         cubes.forEach(c -> {
-            if (c.coordinate.y == BigCubeGenerator.minY) {
+            if (c.coordinate.y == minY) {
                 smallCubes.add(c.rotateDown());
             } else {
                 smallCubes.add(c);
             }
         });
-        return new BigCube(this, smallCubes, size);
+        return new BigCube(this, smallCubes);
     }
 }

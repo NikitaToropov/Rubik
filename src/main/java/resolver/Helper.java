@@ -8,9 +8,9 @@ import java.util.PriorityQueue;
  * TODO в процессе.
  */
 public class Helper {
-    public static PriorityQueue<BigCube> expandTheState(BigCube previousState) {
-        PriorityQueue<BigCube> expandedStates = new PriorityQueue<>();
-
+//    public static PriorityQueue<BigCube> expandTheState(BigCube previousState) {
+//        PriorityQueue<BigCube> expandedStates = new PriorityQueue<>();
+//
 //        expandedStates.add(previousState.rotateFront());
 //        expandedStates.add(previousState.reverseRotateFront());
 //        expandedStates.add(previousState.doubleRotateFront());
@@ -34,10 +34,13 @@ public class Helper {
 //        expandedStates.add(previousState.rotateDown());
 //        expandedStates.add(previousState.reverseRotateDown());
 //        expandedStates.add(previousState.doubleRotateDown());
+//
+//        return expandedStates;
+//    }
 
 
-
-
+    public static PriorityQueue<BigCube> expandTheState(BigCube previousState) {
+        PriorityQueue<BigCube> expandedStates = new PriorityQueue<>();
 
         expandedStates.add(previousState.rotateFront());
 

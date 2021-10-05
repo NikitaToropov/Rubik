@@ -47,7 +47,7 @@ public final class BigCubeGenerator {
                 cubes.add(getSmallCube(x, BigCube.maxY, z));
             }
         }
-        return new BigCube(null, cubes);
+        return new BigCube(null, cubes, 0);
     }
 
     private static SmallCube getSmallCube(int x, int y, int z) {

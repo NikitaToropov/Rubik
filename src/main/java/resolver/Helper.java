@@ -129,6 +129,7 @@ public class Helper {
         result.parent = null;
         result.score = result.score - result.stepNum;
         result.stepNum = 0;
+        result.moveToCurrent = null;
         return result;
     }
 

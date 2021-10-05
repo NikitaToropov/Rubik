@@ -2,14 +2,11 @@ package resolver;
 
 import cube.BigCube;
 
-import java.util.HashSet;
 import java.util.PriorityQueue;
-import java.util.Set;
 
 public class Resolver {
     private int threshold;
     private final BigCube start;
-    private final Set<BigCube> close = new HashSet<>();
 
     public Resolver(BigCube start) {
         this.start = start;
@@ -17,14 +14,15 @@ public class Resolver {
     }
 
     public Report resolveIt() {
+        long startTime = System.nanoTime();
         BigCube tmp = start;
         while (tmp.score != tmp.stepNum) {
             System.out.println("Resolving threshold = " + threshold);
             tmp = search(start);
             this.threshold++;
         }
-
-        return new Report(tmp);
+        long timeInterval = System.nanoTime() - startTime;
+        return new Report(tmp, timeInterval);
     }
 
     private BigCube search(BigCube parent) {

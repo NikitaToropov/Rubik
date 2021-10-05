@@ -6,11 +6,11 @@ import utils.BigCubePrinter;
 public class Main {
     public static void main(String[] args) {
         BigCube goal = BigCubeGenerator.generateBigCube();
-        BigCube start = goal.doubleRotateBack().rotateRight().reverseRotateFront();
+        BigCube start = goal.doubleRotateBack().rotateRight().reverseRotateFront().doubleRotateLeft().reverseRotateDown().doubleRotateUp().reverseRotateDown();
         start.score = start.score - start.stepNum;
         start.stepNum = 0;
         start.parent = null;
-//        BigCubePrinter.print(start);
+        BigCubePrinter.print(start);
 
 
 

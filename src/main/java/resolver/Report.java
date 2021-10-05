@@ -5,12 +5,15 @@ import utils.BigCubePrinter;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class Report {
-    List<BigCube> statesFromStartToFinish;
+    private List<BigCube> statesFromStartToFinish;
+    private long timeInterval;
 
-    public Report(BigCube finishState) {
+    public Report(BigCube finishState, long timeInterval) {
         this.statesFromStartToFinish = reverseStates(finishState);
+        this.timeInterval = timeInterval;
     }
 
     private List<BigCube> reverseStates(BigCube state) {
@@ -23,9 +26,12 @@ public class Report {
     }
 
     public void printResult() {
+        System.out.println("================ REPORT STARTS HERE ===============");
         for (int i = 0; i < statesFromStartToFinish.size(); i++) {
             System.out.println("=======================================");
             BigCubePrinter.print(statesFromStartToFinish.get(i));
         }
+        System.out.println("Working time = " + TimeUnit.NANOSECONDS.toSeconds(timeInterval) + " seconds");
+        System.out.println("================= REPORT ENDS HERE ================");
     }
 }

@@ -25,7 +25,6 @@ public class Report {
     public void printResult() {
         for (int i = 0; i < statesFromStartToFinish.size(); i++) {
             System.out.println("=======================================");
-            System.out.println("step = " + statesFromStartToFinish.get(i).stepNum + "  heuristic = " + statesFromStartToFinish.get(i).score);
             BigCubePrinter.print(statesFromStartToFinish.get(i));
         }
     }

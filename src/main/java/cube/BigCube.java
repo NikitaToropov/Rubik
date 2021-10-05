@@ -17,7 +17,7 @@ public class BigCube implements Comparable<BigCube> {
     public static final int minZ = -1;
     public static final int maxZ = 1;
     public int stepNum;
-    public final int score;
+    public int score;
     public BigCube parent;
     public final Set<SmallCube> cubes;
 
@@ -207,7 +207,7 @@ public class BigCube implements Comparable<BigCube> {
         return new BigCube(this, smallCubes, stepNum + 1);
     }
 
-    public BigCube doublerotateUp() {
+    public BigCube doubleRotateUp() {
         HashSet<SmallCube> smallCubes = new HashSet<>();
         cubes.forEach(c -> {
             if (c.coordinate.y == maxY) {

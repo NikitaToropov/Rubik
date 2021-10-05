@@ -19,11 +19,10 @@ public class Resolver {
     public Report resolveIt() {
         BigCube tmp = start;
         while (tmp.score != tmp.stepNum) {
-            System.out.println("Resolving threshold = " + 20);
+            System.out.println("Resolving threshold = " + threshold);
             tmp = search(start);
             this.threshold++;
         }
-//        long timeInterval = System.nanoTime() - startTime;
 
         return new Report(tmp);
     }
@@ -33,8 +32,7 @@ public class Resolver {
                 || parent.score == parent.stepNum) {
             return parent;
         }
-//        PriorityQueue<BigCube> children = helper.expandTheState(parent);
-        PriorityQueue<BigCube> children = null;
+        PriorityQueue<BigCube> children = Helper.expandTheState(parent);
         BigCube closest = parent;
 
         while (!children.isEmpty()) {

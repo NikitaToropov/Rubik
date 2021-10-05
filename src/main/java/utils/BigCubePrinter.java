@@ -16,6 +16,7 @@ public class BigCubePrinter {
         Sides[][] down = getDownSideMatrix(cube);
         Sides[][] up = getUpSideMatrix(cube);
 
+        System.out.println("step = " + cube.stepNum + "  score = " + cube.score);
         printUpOrDownSide(up);
         printLeftFrontRightBackSides(left, front, right, back);
         printUpOrDownSide(down);

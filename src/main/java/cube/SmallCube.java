@@ -3,6 +3,7 @@ package cube;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class SmallCube {
     public final Coordinate coordinate;
@@ -11,12 +12,13 @@ public class SmallCube {
     Значение - где должна стоять ячейка.
      */
     public final Map<Sides, Sides> faces;
+    public final int heuristic;
 
     public SmallCube(Map<Sides, Sides> faces, Coordinate coordinate) {
         this.faces = faces;
         this.coordinate = coordinate;
+        this.heuristic = countHeuristic();
     }
-
 
     @Override
     public boolean equals(Object o) {
@@ -185,5 +187,16 @@ public class SmallCube {
         int x = coordinate.y * -1;
         int z = coordinate.z;
         return new SmallCube(newFaces, new Coordinate(x, y, z));
+    }
+
+    private int countHeuristic() {
+        AtomicInteger count = new AtomicInteger();
+
+        faces.forEach((k, v) -> {
+            if (!k.equals(v)) {
+                count.addAndGet(1);
+            }
+        });
+        return count.get();
     }
 }

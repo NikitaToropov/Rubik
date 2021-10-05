@@ -10,7 +10,7 @@ public class Resolver {
 
     public Resolver(BigCube start) {
         this.start = start;
-        this.threshold = 20;
+        this.threshold = start.score;
     }
 
     public Report resolveIt() {

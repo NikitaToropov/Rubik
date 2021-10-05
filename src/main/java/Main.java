@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
         BigCube goal = BigCubeGenerator.generateBigCube();
 //        BigCube start = goal.doubleRotateBack().rotateRight().reverseRotateFront().doubleRotateLeft().reverseRotateDown().doubleRotateUp().reverseRotateDown();
-        BigCube start = Helper.rotateTheCubeNTimes(goal, 10);
+        BigCube start = Helper.rotateTheCubeNTimes(goal, 8);
         start.score = start.score - start.stepNum;
         start.stepNum = 0;
         start.parent = null;

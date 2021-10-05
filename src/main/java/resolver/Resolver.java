@@ -26,8 +26,8 @@ public class Resolver {
     }
 
     private BigCube search(BigCube parent) {
-//        if (parent.score > threshold
-        if (parent.stepNum > 20
+        if (parent.score > threshold
+//        if (parent.stepNum > 20
                 || parent.score == parent.stepNum) {
             return parent;
         }

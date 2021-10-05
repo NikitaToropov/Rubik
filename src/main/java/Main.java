@@ -1,4 +1,5 @@
 import cube.BigCube;
+import resolver.Helper;
 import resolver.Resolver;
 import utils.BigCubeGenerator;
 import utils.BigCubePrinter;
@@ -6,7 +7,8 @@ import utils.BigCubePrinter;
 public class Main {
     public static void main(String[] args) {
         BigCube goal = BigCubeGenerator.generateBigCube();
-        BigCube start = goal.doubleRotateBack().rotateRight().reverseRotateFront().doubleRotateLeft().reverseRotateDown().doubleRotateUp().reverseRotateDown();
+//        BigCube start = goal.doubleRotateBack().rotateRight().reverseRotateFront().doubleRotateLeft().reverseRotateDown().doubleRotateUp().reverseRotateDown();
+        BigCube start = Helper.rotateTheCubeNTimes(goal, 10);
         start.score = start.score - start.stepNum;
         start.stepNum = 0;
         start.parent = null;

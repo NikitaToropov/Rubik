@@ -36,9 +36,6 @@ public class Resolver {
 
         while (!children.isEmpty()) {
             BigCube tmp = children.remove();
-            if (isGranny(tmp)) {
-                continue;
-            }
             tmp = search(tmp);
             if (tmp.score == tmp.stepNum) {
                 return tmp;
@@ -48,11 +45,5 @@ public class Resolver {
                     : closest;
         }
         return closest;
-    }
-
-    private boolean isGranny(BigCube state) {
-        return state.parent != null
-                && state.parent.parent != null
-                && state.parent.parent.equals(state);
     }
 }

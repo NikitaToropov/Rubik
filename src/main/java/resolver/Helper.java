@@ -1,6 +1,7 @@
 package resolver;
 
 import cube.BigCube;
+import enums.Rotations;
 
 import java.util.PriorityQueue;
 import java.util.Random;
@@ -9,55 +10,61 @@ import java.util.Random;
  * TODO в процессе.
  */
 public class Helper {
-//    public static PriorityQueue<BigCube> expandTheState(BigCube previousState) {
-//        PriorityQueue<BigCube> expandedStates = new PriorityQueue<>();
-//
-//        expandedStates.add(previousState.rotateFront());
-//        expandedStates.add(previousState.reverseRotateFront());
-//        expandedStates.add(previousState.doubleRotateFront());
-//
-//        expandedStates.add(previousState.rotateBack());
-//        expandedStates.add(previousState.reverseRotateBack());
-//        expandedStates.add(previousState.doubleRotateBack());
-//
-//        expandedStates.add(previousState.rotateRight());
-//        expandedStates.add(previousState.reverseRotateRight());
-//        expandedStates.add(previousState.doubleRotateRight());
-//
-//        expandedStates.add(previousState.rotateLeft());1
-//        expandedStates.add(previousState.reverseRotateLeft());
-//        expandedStates.add(previousState.doubleRotateLeft());
-//
-//        expandedStates.add(previousState.rotateUp());
-//        expandedStates.add(previousState.reverseRotateUp());
-//        expandedStates.add(previousState.doubleRotateUp());
-//
-//        expandedStates.add(previousState.rotateDown());
-//        expandedStates.add(previousState.reverseRotateDown());
-//        expandedStates.add(previousState.doubleRotateDown());
-//
-//        return expandedStates;
-//    }
-
-
     public static PriorityQueue<BigCube> expandTheState(BigCube previousState) {
         PriorityQueue<BigCube> expandedStates = new PriorityQueue<>();
 
         expandedStates.add(previousState.rotateFront());
+        expandedStates.add(previousState.reverseRotateFront());
+        expandedStates.add(previousState.doubleRotateFront());
 
         expandedStates.add(previousState.rotateBack());
+        expandedStates.add(previousState.reverseRotateBack());
+        expandedStates.add(previousState.doubleRotateBack());
 
         expandedStates.add(previousState.rotateRight());
+        expandedStates.add(previousState.reverseRotateRight());
+        expandedStates.add(previousState.doubleRotateRight());
 
         expandedStates.add(previousState.rotateLeft());
+        expandedStates.add(previousState.reverseRotateLeft());
+        expandedStates.add(previousState.doubleRotateLeft());
 
         expandedStates.add(previousState.rotateUp());
+        expandedStates.add(previousState.reverseRotateUp());
+        expandedStates.add(previousState.doubleRotateUp());
 
         expandedStates.add(previousState.rotateDown());
+        expandedStates.add(previousState.reverseRotateDown());
+        expandedStates.add(previousState.doubleRotateDown());
+
         return expandedStates;
     }
 
-    public static BigCube rotateTheCubeNTimes(BigCube cube, int n) {
+
+//    public static PriorityQueue<BigCube> expandTheState(BigCube parent) {
+//        PriorityQueue<BigCube> expandedStates = new PriorityQueue<>();
+////        if (isNotGranny(parent, Rotations.FRONT)) {
+//            expandedStates.add(parent.rotateFront());
+////        }
+////        if (isNotGranny(parent, Rotations.BACK)) {
+//            expandedStates.add(parent.rotateBack());
+////        }
+////        if (isNotGranny(parent, Rotations.RIGHT)) {
+//            expandedStates.add(parent.rotateRight());
+////        }
+////        if (isNotGranny(parent, Rotations.LEFT)) {
+//            expandedStates.add(parent.rotateLeft());
+////        }
+////        if (isNotGranny(parent, Rotations.UP)) {
+//            expandedStates.add(parent.rotateUp());
+////        }
+////        if (isNotGranny(parent, Rotations.DOWN)) {
+//            expandedStates.add(parent.rotateDown());
+////        }
+//        return expandedStates;
+//    }
+
+    public static BigCube randomRotateTheCubeNTimes(BigCube cube, int n) {
         Random random = new Random();
         int tmp;
         BigCube result = cube;

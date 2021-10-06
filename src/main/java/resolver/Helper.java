@@ -1,8 +1,9 @@
 package resolver;
 
 import cube.BigCube;
-import enums.Rotations;
+import enums.Turns;
 
+import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Random;
 
@@ -63,6 +64,54 @@ public class Helper {
 ////        }
 //        return expandedStates;
 //    }
+
+    public static BigCube rotateTheCube(BigCube start, List<Turns> turns) {
+        BigCube cube = start;
+        for (Turns turn : turns) {
+            cube = rotateByTurn(cube, turn);
+        }
+        return cube;
+    }
+
+    private static BigCube rotateByTurn(BigCube cube, Turns turn) {
+        if (turn.equals(Turns.FRONT)) {
+            return cube.rotateFront();
+        } else if (turn.equals(Turns.DOUBLE_FRONT)) {
+            return cube.doubleRotateFront();
+        } else if (turn.equals(Turns.REVERSE_FRONT)) {
+            return cube.reverseRotateFront();
+        } else if (turn.equals(Turns.BACK)) {
+            return cube.rotateBack();
+        } else if (turn.equals(Turns.DOUBLE_BACK)) {
+            return cube.doubleRotateBack();
+        } else if (turn.equals(Turns.REVERSE_BACK)) {
+            return cube.reverseRotateBack();
+        } else if (turn.equals(Turns.LEFT)) {
+            return cube.rotateLeft();
+        } else if (turn.equals(Turns.DOUBLE_LEFT)) {
+            return cube.doubleRotateLeft();
+        } else if (turn.equals(Turns.REVERSE_LEFT)) {
+            return cube.reverseRotateLeft();
+        } else if (turn.equals(Turns.RIGHT)) {
+            return cube.rotateRight();
+        } else if (turn.equals(Turns.DOUBLE_RIGHT)) {
+            return cube.doubleRotateRight();
+        } else if (turn.equals(Turns.REVERSE_RIGHT)) {
+            return cube.reverseRotateRight();
+        } else if (turn.equals(Turns.UP)) {
+            return cube.rotateUp();
+        } else if (turn.equals(Turns.DOUBLE_UP)) {
+            return cube.doubleRotateUp();
+        } else if (turn.equals(Turns.REVERSE_UP)) {
+            return cube.reverseRotateUp();
+        } else if (turn.equals(Turns.DOWN)) {
+            return cube.rotateDown();
+        } else if (turn.equals(Turns.DOUBLE_DOWN)) {
+            return cube.doubleRotateDown();
+        } else {
+            return cube.reverseRotateDown();
+        }
+    }
 
     public static BigCube randomRotateTheCubeNTimes(BigCube cube, int n) {
         Random random = new Random();

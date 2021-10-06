@@ -1,7 +1,6 @@
 package cube;
 
-import enums.Rotations;
-import javafx.scene.transform.Rotate;
+import enums.Turns;
 
 import java.util.HashSet;
 import java.util.Objects;
@@ -22,10 +21,10 @@ public class BigCube implements Comparable<BigCube> {
     public int stepNum;
     public int score;
     public BigCube parent;
-    public Rotations moveToCurrent;
+    public Turns moveToCurrent;
     public final Set<SmallCube> cubes;
 
-    public BigCube(BigCube parent, Set<SmallCube> cubes, int stepNum, Rotations moveToCurrent) {
+    public BigCube(BigCube parent, Set<SmallCube> cubes, int stepNum, Turns moveToCurrent) {
         this.parent = parent;
         this.cubes = cubes;
         this.stepNum = stepNum;
@@ -65,7 +64,7 @@ public class BigCube implements Comparable<BigCube> {
                 smallCubes.add(c);
             }
         });
-        return new BigCube(this, smallCubes, stepNum + 1, Rotations.LEFT);
+        return new BigCube(this, smallCubes, stepNum + 1, Turns.LEFT);
     }
 
     public BigCube doubleRotateLeft() {
@@ -77,7 +76,7 @@ public class BigCube implements Comparable<BigCube> {
                 smallCubes.add(c);
             }
         });
-        return new BigCube(this, smallCubes, stepNum + 1, Rotations.DOUBLE_LEFT);
+        return new BigCube(this, smallCubes, stepNum + 1, Turns.DOUBLE_LEFT);
     }
 
     public BigCube reverseRotateLeft() {
@@ -89,7 +88,7 @@ public class BigCube implements Comparable<BigCube> {
                 smallCubes.add(c);
             }
         });
-        return new BigCube(this, smallCubes, stepNum + 1, Rotations.REVERSE_LEFT);
+        return new BigCube(this, smallCubes, stepNum + 1, Turns.REVERSE_LEFT);
     }
 
     public BigCube rotateFront() {
@@ -101,7 +100,7 @@ public class BigCube implements Comparable<BigCube> {
                 smallCubes.add(c);
             }
         });
-        return new BigCube(this, smallCubes, stepNum + 1, Rotations.FRONT);
+        return new BigCube(this, smallCubes, stepNum + 1, Turns.FRONT);
     }
 
     public BigCube doubleRotateFront() {
@@ -113,7 +112,7 @@ public class BigCube implements Comparable<BigCube> {
                 smallCubes.add(c);
             }
         });
-        return new BigCube(this, smallCubes, stepNum + 1, Rotations.DOUBLE_FRONT);
+        return new BigCube(this, smallCubes, stepNum + 1, Turns.DOUBLE_FRONT);
     }
 
     public BigCube reverseRotateFront() {
@@ -125,7 +124,7 @@ public class BigCube implements Comparable<BigCube> {
                 smallCubes.add(c);
             }
         });
-        return new BigCube(this, smallCubes, stepNum + 1, Rotations.REVERSE_FRONT);
+        return new BigCube(this, smallCubes, stepNum + 1, Turns.REVERSE_FRONT);
     }
 
     public BigCube rotateRight() {
@@ -137,7 +136,7 @@ public class BigCube implements Comparable<BigCube> {
                 smallCubes.add(c);
             }
         });
-        return new BigCube(this, smallCubes, stepNum + 1, Rotations.RIGHT);
+        return new BigCube(this, smallCubes, stepNum + 1, Turns.RIGHT);
     }
 
     public BigCube doubleRotateRight() {
@@ -149,7 +148,7 @@ public class BigCube implements Comparable<BigCube> {
                 smallCubes.add(c);
             }
         });
-        return new BigCube(this, smallCubes, stepNum + 1, Rotations.DOUBLE_RIGHT);
+        return new BigCube(this, smallCubes, stepNum + 1, Turns.DOUBLE_RIGHT);
     }
 
     public BigCube reverseRotateRight() {
@@ -161,7 +160,7 @@ public class BigCube implements Comparable<BigCube> {
                 smallCubes.add(c);
             }
         });
-        return new BigCube(this, smallCubes, stepNum + 1, Rotations.REVERSE_RIGHT);
+        return new BigCube(this, smallCubes, stepNum + 1, Turns.REVERSE_RIGHT);
     }
 
     public BigCube rotateBack() {
@@ -173,7 +172,7 @@ public class BigCube implements Comparable<BigCube> {
                 smallCubes.add(c);
             }
         });
-        return new BigCube(this, smallCubes, stepNum + 1, Rotations.BACK);
+        return new BigCube(this, smallCubes, stepNum + 1, Turns.BACK);
     }
 
     public BigCube doubleRotateBack() {
@@ -185,7 +184,7 @@ public class BigCube implements Comparable<BigCube> {
                 smallCubes.add(c);
             }
         });
-        return new BigCube(this, smallCubes, stepNum + 1, Rotations.DOUBLE_BACK);
+        return new BigCube(this, smallCubes, stepNum + 1, Turns.DOUBLE_BACK);
     }
 
     public BigCube reverseRotateBack() {
@@ -197,7 +196,7 @@ public class BigCube implements Comparable<BigCube> {
                 smallCubes.add(c);
             }
         });
-        return new BigCube(this, smallCubes, stepNum + 1, Rotations.REVERSE_BACK);
+        return new BigCube(this, smallCubes, stepNum + 1, Turns.REVERSE_BACK);
     }
 
     public BigCube rotateUp() {
@@ -209,7 +208,7 @@ public class BigCube implements Comparable<BigCube> {
                 smallCubes.add(c);
             }
         });
-        return new BigCube(this, smallCubes, stepNum + 1, Rotations.UP);
+        return new BigCube(this, smallCubes, stepNum + 1, Turns.UP);
     }
 
     public BigCube doubleRotateUp() {
@@ -221,7 +220,7 @@ public class BigCube implements Comparable<BigCube> {
                 smallCubes.add(c);
             }
         });
-        return new BigCube(this, smallCubes, stepNum + 1, Rotations.DOUBLE_UP);
+        return new BigCube(this, smallCubes, stepNum + 1, Turns.DOUBLE_UP);
     }
 
     public BigCube reverseRotateUp() {
@@ -233,7 +232,7 @@ public class BigCube implements Comparable<BigCube> {
                 smallCubes.add(c);
             }
         });
-        return new BigCube(this, smallCubes, stepNum + 1, Rotations.REVERSE_UP);
+        return new BigCube(this, smallCubes, stepNum + 1, Turns.REVERSE_UP);
     }
 
     public BigCube rotateDown() {
@@ -245,7 +244,7 @@ public class BigCube implements Comparable<BigCube> {
                 smallCubes.add(c);
             }
         });
-        return new BigCube(this, smallCubes, stepNum + 1, Rotations.DOWN);
+        return new BigCube(this, smallCubes, stepNum + 1, Turns.DOWN);
     }
 
     public BigCube doubleRotateDown() {
@@ -257,7 +256,7 @@ public class BigCube implements Comparable<BigCube> {
                 smallCubes.add(c);
             }
         });
-        return new BigCube(this, smallCubes, stepNum + 1, Rotations.DOUBLE_DOWN);
+        return new BigCube(this, smallCubes, stepNum + 1, Turns.DOUBLE_DOWN);
     }
 
     public BigCube reverseRotateDown() {
@@ -269,6 +268,6 @@ public class BigCube implements Comparable<BigCube> {
                 smallCubes.add(c);
             }
         });
-        return new BigCube(this, smallCubes, stepNum + 1, Rotations.REVERSE_DOWN);
+        return new BigCube(this, smallCubes, stepNum + 1, Turns.REVERSE_DOWN);
     }
 }

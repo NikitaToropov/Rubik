@@ -16,7 +16,7 @@ public class BigCubePrinter {
         Sides[][] down = getDownSideMatrix(cube);
         Sides[][] up = getUpSideMatrix(cube);
 
-        System.out.println("step = " + cube.stepNum + "  score = " + cube.score + ((cube.lastTurn != null)
+        System.out.println("phase = " + BigCube.phase + " step = " + cube.stepNum + "  score = " + cube.score + ((cube.lastTurn != null)
                 ? "  move = " +  cube.lastTurn.getDescription()
                 : ""));
         printUpOrDownSide(up);

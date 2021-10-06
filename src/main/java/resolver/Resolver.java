@@ -5,25 +5,25 @@ import cube.BigCube;
 import java.util.PriorityQueue;
 
 public class Resolver {
-//    private int threshold;
+    private int threshold;
     private final BigCube start;
 
     public Resolver(BigCube start) {
         this.start = start;
+//        this.threshold = start.score * start.score;
+        this.threshold = 5;
 //        this.threshold = start.score;
     }
 
     public Report resolveIt() {
         long startTime = System.nanoTime();
         BigCube tmp = start;
-        tmp.phase = 1;
+        BigCube.phase = 1;
         while (tmp.score != tmp.stepNum) {
-//            System.out.println("Resolving threshold = " + threshold);
             tmp = search(start);
-//            this.threshold++;
+            this.threshold++;
         }
-//        this.threshold = 20;
-//        tmp.phase = 2;
+//        BigCube.phase = 2;
 //        tmp = new BigCube(tmp.parent, tmp.cubes, tmp.stepNum, tmp.lastTurn);
 //        while (tmp.score != tmp.stepNum) {
 //            System.out.println("Resolving threshold = " + threshold);
@@ -36,7 +36,8 @@ public class Resolver {
     }
 
     private BigCube search(BigCube parent) {
-        if (parent.stepNum > 15
+//        if (parent.score > threshold
+        if (parent.stepNum > threshold
                 || parent.score == parent.stepNum) {
             return parent;
         }

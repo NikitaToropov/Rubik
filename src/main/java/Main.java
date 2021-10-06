@@ -15,30 +15,9 @@ public class Main {
             return;
         }
 
-
-        /*
-        Шмат для тестов
-         */
-//        for (int i = 0; i < args.length; i++) System.out.print(args[i] + " ");
-//        System.out.println();
-//        turns.forEach(t -> System.out.printf(t.getDescription() + " "));
-
         BigCube goal = BigCubeGenerator.generateBigCube();
         BigCube start = Helper.rotateTheCube(goal, turns); // Смешивание по командам
         BigCubePrinter.print(start);
-        /*
-        U R2 F B R B2
-         */
-        BigCube manualStart = goal.rotateUp().doubleRotateRight().rotateFront().rotateBack().rotateRight().doubleRotateBack();
-        BigCubePrinter.print(manualStart);
-//        BigCube start = Helper.randomRotateTheCubeNTimes(goal, 8); // Рандомные смешивания
-//        start.score = start.score - start.stepNum;
-//        start.stepNum = 0;
-//        start.parent = null;
-//        BigCubePrinter.print(start);
-//
-//        new Resolver(start).resolveIt().printResult();
-
 
     }
 

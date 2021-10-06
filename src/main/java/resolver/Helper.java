@@ -70,6 +70,8 @@ public class Helper {
         for (Turns turn : turns) {
             cube = rotateByTurn(cube, turn);
         }
+        cube.parent = null;
+        cube.lastTurn = null;
         return cube;
     }
 
@@ -185,7 +187,7 @@ public class Helper {
         result.parent = null;
         result.score = result.score - result.stepNum;
         result.stepNum = 0;
-        result.moveToCurrent = null;
+        result.lastTurn = null;
         return result;
     }
 

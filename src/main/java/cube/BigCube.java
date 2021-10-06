@@ -1,5 +1,6 @@
 package cube;
 
+import enums.Sides;
 import enums.Turns;
 
 import java.util.HashSet;
@@ -18,24 +19,21 @@ public class BigCube implements Comparable<BigCube> {
     public static final int maxY = 1;
     public static final int minZ = -1;
     public static final int maxZ = 1;
+    public static int phase = 1;
     public int stepNum;
     public int score;
     public BigCube parent;
-    public Turns moveToCurrent;
+    public Turns lastTurn;
     public final Set<SmallCube> cubes;
 
     public BigCube(BigCube parent, Set<SmallCube> cubes, int stepNum, Turns moveToCurrent) {
         this.parent = parent;
         this.cubes = cubes;
         this.stepNum = stepNum;
-        this.score = countHeuristic() + stepNum;
-        this.moveToCurrent = moveToCurrent;
+        this.score = countHeuristic(cubes) + stepNum;
+        this.lastTurn = moveToCurrent;
     }
 
-    private int countHeuristic() {
-        int count = cubes.stream().mapToInt(c -> c.heuristic).sum();
-        return count;
-    }
 
     @Override
     public int compareTo(BigCube state) {
@@ -269,5 +267,60 @@ public class BigCube implements Comparable<BigCube> {
             }
         });
         return new BigCube(this, smallCubes, stepNum + 1, Turns.REVERSE_DOWN);
+    }
+
+    private int countHeuristic(Set<SmallCube> cubes) {
+        return phase == 1
+                ? getFirstPhaseHScore(cubes)
+                : getSecondPhaseHScore(cubes);
+    }
+
+    /**
+     *         U U U
+     *         U U U
+     *         U U U
+     *
+     * - - -   - - -   - - -   - - -
+     * - L -   F F F   - R -   B B B
+     * - - -   - - -   - - -   - - -
+     *
+     *         D D D
+     *         D D D
+     *         D D D
+     */
+    private int getFirstPhaseHScore(Set<SmallCube> cubes) {
+        int score = 0;
+        for (SmallCube cube : cubes) {
+            if (cube.faces.containsValue(Sides.U)
+                    || cube.faces.containsValue(Sides.D)) {
+                score += cube.heuristic;
+            } else if (cube.faces.size() == 2
+                    && (cube.faces.containsValue(Sides.F)
+                    || (cube.faces.containsValue(Sides.B)))) {
+                score += cube.heuristic;
+            }
+        }
+        return score;
+    }
+
+    /**
+     *         U U U
+     *         U U U
+     *         U U U
+     *
+     * L L L   F F F   R R R   B B B
+     * L L L   F F F   R R R   B B B
+     * L L L   F F F   R R R   B B B
+     *
+     *         D D D
+     *         D D D
+     *         D D D
+     */
+    private int getSecondPhaseHScore(Set<SmallCube> cubes) {
+        int score = 0;
+        for (SmallCube cube : cubes) {
+            score += cube.heuristic;
+        }
+        return score;
     }
 }

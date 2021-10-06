@@ -2,7 +2,7 @@ package utils;
 
 import cube.BigCube;
 import cube.Coordinate;
-import cube.Sides;
+import enums.Sides;
 import cube.SmallCube;
 
 import java.util.HashMap;
@@ -47,7 +47,7 @@ public final class BigCubeGenerator {
                 cubes.add(getSmallCube(x, BigCube.maxY, z));
             }
         }
-        return new BigCube(null, cubes, 0);
+        return new BigCube(null, cubes, 0, null);
     }
 
     private static SmallCube getSmallCube(int x, int y, int z) {

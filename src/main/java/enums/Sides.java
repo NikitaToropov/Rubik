@@ -1,4 +1,4 @@
-package cube;
+package enums;
 
 public enum Sides {
     F,

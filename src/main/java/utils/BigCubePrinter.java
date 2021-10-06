@@ -1,7 +1,7 @@
 package utils;
 
 import cube.BigCube;
-import cube.Sides;
+import enums.Sides;
 
 public class BigCubePrinter {
 
@@ -16,7 +16,9 @@ public class BigCubePrinter {
         Sides[][] down = getDownSideMatrix(cube);
         Sides[][] up = getUpSideMatrix(cube);
 
-        System.out.println("step = " + cube.stepNum + "  score = " + cube.score);
+        System.out.println("step = " + cube.stepNum + "  score = " + cube.score + ((cube.moveToCurrent != null)
+                ? "  move = " +  cube.moveToCurrent.getDescription()
+                : ""));
         printUpOrDownSide(up);
         printLeftFrontRightBackSides(left, front, right, back);
         printUpOrDownSide(down);

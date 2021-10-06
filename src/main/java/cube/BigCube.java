@@ -291,13 +291,14 @@ public class BigCube implements Comparable<BigCube> {
     private int getFirstPhaseHScore(Set<SmallCube> cubes) {
         int score = 0;
         for (SmallCube cube : cubes) {
-            if (cube.faces.containsValue(Sides.U)
-                    || cube.faces.containsValue(Sides.D)) {
-                score += cube.heuristic;
+            if (cube.faces.containsValue(Sides.U) && (!Sides.U.equals(cube.faces.get(Sides.U)))) {
+                score += Math.abs(BigCube.maxY - cube.coordinate.y);
+            } else if (cube.faces.containsValue(Sides.D) && (!Sides.U.equals(cube.faces.get(Sides.D)))) {
+                score += Math.abs(BigCube.minY - cube.coordinate.y);
             } else if (cube.faces.size() == 2
-                    && (cube.faces.containsValue(Sides.F)
-                    || (cube.faces.containsValue(Sides.B)))) {
-                score += cube.heuristic;
+                && ((cube.faces.containsValue(Sides.F) && (!Sides.F.equals(cube.faces.get(Sides.F))))
+                    || (cube.faces.containsValue(Sides.B)) && (!Sides.B.equals(cube.faces.get(Sides.B))))) {
+                score += 1;
             }
         }
         return score;

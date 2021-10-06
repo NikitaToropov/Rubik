@@ -11,59 +11,66 @@ import java.util.Random;
  * TODO в процессе.
  */
 public class Helper {
-    public static PriorityQueue<BigCube> expandTheState(BigCube previousState) {
+    public static PriorityQueue<BigCube> expandTheState(BigCube parent) {
+        return parent.phase == 1
+                ? firstPhaseExpanding(parent)
+                : secondPhaseExpanding(parent);
+    }
+
+    /**
+     * U,D,L,R,F,B
+     */
+    private static PriorityQueue<BigCube> firstPhaseExpanding(BigCube parent) {
         PriorityQueue<BigCube> expandedStates = new PriorityQueue<>();
 
-        expandedStates.add(previousState.rotateFront());
-        expandedStates.add(previousState.reverseRotateFront());
-        expandedStates.add(previousState.doubleRotateFront());
-
-        expandedStates.add(previousState.rotateBack());
-        expandedStates.add(previousState.reverseRotateBack());
-        expandedStates.add(previousState.doubleRotateBack());
-
-        expandedStates.add(previousState.rotateRight());
-        expandedStates.add(previousState.reverseRotateRight());
-        expandedStates.add(previousState.doubleRotateRight());
-
-        expandedStates.add(previousState.rotateLeft());
-        expandedStates.add(previousState.reverseRotateLeft());
-        expandedStates.add(previousState.doubleRotateLeft());
-
-        expandedStates.add(previousState.rotateUp());
-        expandedStates.add(previousState.reverseRotateUp());
-        expandedStates.add(previousState.doubleRotateUp());
-
-        expandedStates.add(previousState.rotateDown());
-        expandedStates.add(previousState.reverseRotateDown());
-        expandedStates.add(previousState.doubleRotateDown());
+        if (!Turns.UP.equals(parent.lastTurn)) {
+            expandedStates.add(parent.rotateUp());
+        }
+        if (!Turns.DOWN.equals(parent.lastTurn)) {
+            expandedStates.add(parent.rotateDown());
+        }
+        if (!Turns.LEFT.equals(parent.lastTurn)) {
+            expandedStates.add(parent.rotateLeft());
+        }
+        if (!Turns.RIGHT.equals(parent.lastTurn)) {
+            expandedStates.add(parent.rotateRight());
+        }
+        if (!Turns.FRONT.equals(parent.lastTurn)) {
+            expandedStates.add(parent.rotateFront());
+        }
+        if (!Turns.BACK.equals(parent.lastTurn)) {
+            expandedStates.add(parent.rotateBack());
+        }
 
         return expandedStates;
     }
 
+    /**
+     * U,D,L2,R2,F2,B2
+     */
+    private static PriorityQueue<BigCube> secondPhaseExpanding(BigCube parent) {
+        PriorityQueue<BigCube> expandedStates = new PriorityQueue<>();
 
-//    public static PriorityQueue<BigCube> expandTheState(BigCube parent) {
-//        PriorityQueue<BigCube> expandedStates = new PriorityQueue<>();
-////        if (isNotGranny(parent, Rotations.FRONT)) {
-//            expandedStates.add(parent.rotateFront());
-////        }
-////        if (isNotGranny(parent, Rotations.BACK)) {
-//            expandedStates.add(parent.rotateBack());
-////        }
-////        if (isNotGranny(parent, Rotations.RIGHT)) {
-//            expandedStates.add(parent.rotateRight());
-////        }
-////        if (isNotGranny(parent, Rotations.LEFT)) {
-//            expandedStates.add(parent.rotateLeft());
-////        }
-////        if (isNotGranny(parent, Rotations.UP)) {
-//            expandedStates.add(parent.rotateUp());
-////        }
-////        if (isNotGranny(parent, Rotations.DOWN)) {
-//            expandedStates.add(parent.rotateDown());
-////        }
-//        return expandedStates;
-//    }
+        if (parent.lastTurn == null || parent.lastTurn.equals(Turns.UP)) {
+            expandedStates.add(parent.rotateUp());
+        }
+        if (parent.lastTurn == null || parent.lastTurn.equals(Turns.DOWN)) {
+            expandedStates.add(parent.rotateDown());
+        }
+        if (parent.lastTurn == null || parent.lastTurn.equals(Turns.DOUBLE_LEFT)) {
+            expandedStates.add(parent.doubleRotateLeft());
+        }
+        if (parent.lastTurn == null || parent.lastTurn.equals(Turns.DOUBLE_RIGHT)) {
+            expandedStates.add(parent.doubleRotateRight());
+        }
+        if (parent.lastTurn == null || parent.lastTurn.equals(Turns.DOUBLE_FRONT)) {
+            expandedStates.add(parent.doubleRotateBack());
+        }
+        if (parent.lastTurn == null || parent.lastTurn.equals(Turns.DOUBLE_BACK)) {
+            expandedStates.add(parent.doubleRotateFront());
+        }
+        return expandedStates;
+    }
 
     public static BigCube rotateTheCube(BigCube start, List<Turns> turns) {
         BigCube cube = start;

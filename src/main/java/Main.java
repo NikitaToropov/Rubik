@@ -2,6 +2,7 @@ import cube.BigCube;
 import enums.Turns;
 import exceptions.WrongArgumentException;
 import resolver.Helper;
+import resolver.Resolver;
 import utils.BigCubeGenerator;
 import utils.BigCubePrinter;
 
@@ -18,6 +19,7 @@ public class Main {
         BigCube goal = BigCubeGenerator.generateBigCube();
         BigCube start = Helper.rotateTheCube(goal, turns); // Смешивание по командам
         BigCubePrinter.print(start);
+        new Resolver(start).resolveIt().printResult();
 
     }
 

@@ -4,6 +4,7 @@ import enums.Sides;
 import enums.Turns;
 
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
@@ -291,18 +292,51 @@ public class BigCube implements Comparable<BigCube> {
     private int getFirstPhaseHScore(Set<SmallCube> cubes) {
         int score = 0;
         for (SmallCube cube : cubes) {
-            if (cube.faces.containsValue(Sides.U)) {
-                if (!Sides.U.equals(cube.faces.get(Sides.U))) {
-                    score += 1;
+
+            Map<Sides, Sides> faces = cube.faces;
+            {
+                if (faces.containsValue(Sides.U)) {
+                    if (!Sides.U.equals(faces.get(Sides.U)) && !Sides.U.equals(faces.get(Sides.D))) {
+                        score++;
+                    }
+                } else if (faces.containsValue(Sides.D)) {
+                    if (!Sides.D.equals(faces.get(Sides.U)) && !Sides.D.equals(faces.get(Sides.D))) {
+                        score++;
+                    }
                 }
-            } else if (cube.faces.containsValue(Sides.D)) {
-                if (!Sides.D.equals(cube.faces.get(Sides.D))) {
-                    score += 1;
-                }
-            } else if ((cube.faces.containsValue(Sides.F) && (!Sides.F.equals(cube.faces.get(Sides.F))))
-                    || (cube.faces.containsValue(Sides.B)) && (!Sides.B.equals(cube.faces.get(Sides.B)))) {
-                score += 1;
             }
+//            if (faces.size() == 3) {
+//                if (faces.containsValue(Sides.U)) {
+//                    if (!Sides.U.equals(faces.get(Sides.U)) && !Sides.U.equals(faces.get(Sides.D))) {
+//                        score++;
+//                    }
+//                } else {
+//                    if (!Sides.D.equals(faces.get(Sides.U)) && !Sides.D.equals(faces.get(Sides.D))) {
+//                        score++;
+//                    }
+//                }
+//            } else if (faces.size() == 2) {
+//                if (faces.containsValue(Sides.U)) {
+//                    if (!Sides.U.equals(faces.get(Sides.U)) && !Sides.U.equals(faces.get(Sides.D))) {
+//                        score++;
+//                    }
+//                } else if (faces.containsValue(Sides.D)) {
+//                    if (!Sides.D.equals(faces.get(Sides.U)) && !Sides.D.equals(faces.get(Sides.D))) {
+//                        score++;
+//                    }
+//                }
+////                else if (faces.containsValue(Sides.F)) {
+////                    if ((!Sides.F.equals(faces.get(Sides.F)) && !Sides.F.equals(faces.get(Sides.B)))
+////                    || cube.coordinate.y != 0) {
+////                        score++;
+////                    }
+////                } else if (faces.containsValue(Sides.B)) {
+////                    if ((!Sides.B.equals(faces.get(Sides.F)) && !Sides.B.equals(faces.get(Sides.B)))
+////                            || cube.coordinate.y != 0) {
+////                        score++;
+////                    }
+////                }
+//            }
         }
         return score;
     }

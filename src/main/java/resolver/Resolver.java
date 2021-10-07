@@ -11,8 +11,8 @@ public class Resolver {
     public Resolver(BigCube start) {
         this.start = start;
 //        this.threshold = start.score * start.score;
-        this.threshold = 5;
-//        this.threshold = start.score;
+//        this.threshold = 5;
+        this.threshold = start.score;
     }
 
     public Report resolveIt() {
@@ -36,8 +36,8 @@ public class Resolver {
     }
 
     private BigCube search(BigCube parent) {
-//        if (parent.score > threshold
-        if (parent.stepNum > threshold
+        if (parent.score > threshold
+//        if (parent.stepNum > threshold
                 || parent.score == parent.stepNum) {
             return parent;
         }

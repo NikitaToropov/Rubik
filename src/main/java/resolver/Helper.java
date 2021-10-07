@@ -23,24 +23,57 @@ public class Helper {
     private static PriorityQueue<BigCube> firstPhaseExpanding(BigCube parent) {
         PriorityQueue<BigCube> expandedStates = new PriorityQueue<>();
 
-        if (!Turns.UP.equals(parent.lastTurn)) {
+        /*
+        UP-DOWN
+         */
+//        if (!Turns.UP.equals(parent.lastTurn)
+//                && !Turns.DOUBLE_UP.equals(parent.lastTurn)
+//                && !Turns.REVERSE_UP.equals(parent.lastTurn)) {
             expandedStates.add(parent.rotateUp());
-        }
-        if (!Turns.DOWN.equals(parent.lastTurn)) {
+//            expandedStates.add(parent.doubleRotateUp());
+//            expandedStates.add(parent.reverseRotateUp());
+//        }
+//        if (!Turns.DOWN.equals(parent.lastTurn)
+//                && !Turns.DOUBLE_DOWN.equals(parent.lastTurn)
+//                && !Turns.REVERSE_DOWN.equals(parent.lastTurn)) {
             expandedStates.add(parent.rotateDown());
-        }
-        if (!Turns.LEFT.equals(parent.lastTurn)) {
+//            expandedStates.add(parent.doubleRotateDown());
+//            expandedStates.add(parent.reverseRotateDown());
+//        }
+        /*
+        LEFT-RIGHT
+         */
+//        if (!Turns.LEFT.equals(parent.lastTurn)
+//                && !Turns.DOUBLE_LEFT.equals(parent.lastTurn)
+//                && !Turns.REVERSE_LEFT.equals(parent.lastTurn)) {
             expandedStates.add(parent.rotateLeft());
-        }
-        if (!Turns.RIGHT.equals(parent.lastTurn)) {
+//            expandedStates.add(parent.doubleRotateLeft());
+//            expandedStates.add(parent.reverseRotateLeft());
+//        }
+//        if (!Turns.RIGHT.equals(parent.lastTurn)
+//                && !Turns.DOUBLE_RIGHT.equals(parent.lastTurn)
+//                && !Turns.REVERSE_RIGHT.equals(parent.lastTurn)) {
             expandedStates.add(parent.rotateRight());
-        }
-        if (!Turns.FRONT.equals(parent.lastTurn)) {
+//            expandedStates.add(parent.doubleRotateRight());
+//            expandedStates.add(parent.reverseRotateRight());
+//        }
+        /*
+        FRONT-BACK
+         */
+//        if (!Turns.FRONT.equals(parent.lastTurn)
+//                && !Turns.DOUBLE_FRONT.equals(parent.lastTurn)
+//                && !Turns.REVERSE_FRONT.equals(parent.lastTurn)) {
             expandedStates.add(parent.rotateFront());
-        }
-        if (!Turns.BACK.equals(parent.lastTurn)) {
+//            expandedStates.add(parent.doubleRotateFront());
+//            expandedStates.add(parent.reverseRotateFront());
+//        }
+//        if (!Turns.BACK.equals(parent.lastTurn)
+//                && !Turns.DOUBLE_BACK.equals(parent.lastTurn)
+//                && !Turns.REVERSE_BACK.equals(parent.lastTurn)) {
             expandedStates.add(parent.rotateBack());
-        }
+//            expandedStates.add(parent.doubleRotateBack());
+//            expandedStates.add(parent.reverseRotateBack());
+//        }
 
         return expandedStates;
     }

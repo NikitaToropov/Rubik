@@ -20,6 +20,21 @@ public class Main {
          */
         Cube cube = new Cube();
         cube.printCube();
+
+        rotateCubeByTurnsFromInput(cube, turns);
+        cube.printCube();
+
+
+    }
+
+    private static void rotateCubeByTurnsFromInput(Cube cube, List<Turns> turns) {
+        for (Turns turn : turns) {
+            System.out.println("===============================================");
+            String turnNotation = Turns.performMove(cube, turn);
+            System.out.println(turnNotation);
+            cube.printCube();
+            System.out.println("===============================================");
+        }
     }
 
     private static List<Turns> readingFromInput(String[] args) {
@@ -41,7 +56,7 @@ public class Main {
     public static Turns getByDescription(String arg) {
         Turns[] turns = Turns.values();
         for (Turns turn : turns) {
-            if (turn.getDescription().equals(arg)) {
+            if (turn.getNotation().equals(arg)) {
                 return turn;
             }
         }

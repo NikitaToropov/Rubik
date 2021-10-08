@@ -4,16 +4,16 @@ import java.util.Arrays;
 
 public enum Turns {
     FRONT("F"),
-    DOUBLE_FRONT("F2"),
-    REVERSE_FRONT("F'"),
+    FRONT_DOUBLE("F2"),
+    FRONT_REVERSE("F'"),
 
     BACK("B"),
-    DOUBLE_BACK("B2"),
-    REVERSE_BACK("B'"),
+    BACK_DOUBLE("B2"),
+    BACK_REVERSE("B'"),
 
     UP("U"),
-    DOUBLE_UP("U2"),
-    REVERSE_UP("U'"),
+    UP_DOUBLE("U2"),
+    UP_REVERSE("U'"),
 
     DOWN("D"),
     DOUBLE_DOWN("D2"),

@@ -1,9 +1,6 @@
-import cube.BigCube;
+import cube.Cube;
 import enums.Turns;
 import exceptions.WrongArgumentException;
-import resolver.Helper;
-import utils.BigCubeGenerator;
-import utils.BigCubePrinter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,32 +11,15 @@ public class Main {
         if (turns == null || turns.size() < args.length) {
             return;
         }
-
-
         /*
-        Шмат для тестов
+        Commands from input.
          */
-//        for (int i = 0; i < args.length; i++) System.out.print(args[i] + " ");
-//        System.out.println();
-//        turns.forEach(t -> System.out.printf(t.getDescription() + " "));
-
-        BigCube goal = BigCubeGenerator.generateBigCube();
-        BigCube start = Helper.rotateTheCube(goal, turns); // Смешивание по командам
-        BigCubePrinter.print(start);
+        turns.forEach(System.out::println);
         /*
-        U R2 F B R B2
+        Resolved cube.
          */
-        BigCube manualStart = goal.rotateUp().doubleRotateRight().rotateFront().rotateBack().rotateRight().doubleRotateBack();
-        BigCubePrinter.print(manualStart);
-//        BigCube start = Helper.randomRotateTheCubeNTimes(goal, 8); // Рандомные смешивания
-//        start.score = start.score - start.stepNum;
-//        start.stepNum = 0;
-//        start.parent = null;
-//        BigCubePrinter.print(start);
-//
-//        new Resolver(start).resolveIt().printResult();
-
-
+        Cube cube = new Cube();
+        cube.printCube();
     }
 
     private static List<Turns> readingFromInput(String[] args) {

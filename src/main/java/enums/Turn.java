@@ -64,32 +64,32 @@ public enum Turn {
         /*
         TODO тут можно поэксперементировать!!!
          */
-//        else if (this.equals(A_1) || this.equals(A_2) || this.equals(A_3)) {
-//            return A_1.equals(turn) || A_2.equals(turn) || A_3.equals(turn);
-//        } else if (this.equals(A_4) || this.equals(A_5) || this.equals(A_6)) {
-//            return A_4.equals(turn) || A_5.equals(turn) || A_6.equals(turn);
-//        } else if (this.equals(A_7) || this.equals(A_8)) {
-//            return A_7.equals(turn) || A_8.equals(turn);
-//        }
-        else if (this.equals(A_1)) {
-            return A_1.equals(turn);
-        } else if (this.equals(A_2)) {
-            return A_2.equals(turn);
-        } else if (this.equals(A_3)) {
-            return A_3.equals(turn);
-        } else if (this.equals(A_4)) {
-            return A_4.equals(turn);
-        } else if (this.equals(A_5)) {
-            return A_5.equals(turn);
-        } else if (this.equals(A_6)) {
-            return A_6.equals(turn);
-        } else if (this.equals(A_7)) {
-            return A_7.equals(turn);
-        } else if (this.equals(A_8)) {
-            return A_8.equals(turn);
-        } else {
-            return false;
+        else if (this.equals(A_1) || this.equals(A_2) || this.equals(A_3)) {
+            return A_1.equals(turn) || A_2.equals(turn) || A_3.equals(turn);
+        } else if (this.equals(A_4) || this.equals(A_5) || this.equals(A_6)) {
+            return A_4.equals(turn) || A_5.equals(turn) || A_6.equals(turn);
+        } else if (this.equals(A_7) || this.equals(A_8)) {
+            return A_7.equals(turn) || A_8.equals(turn);
         }
+//        else if (this.equals(A_1)) {
+//            return A_1.equals(turn);
+//        } else if (this.equals(A_2)) {
+//            return A_2.equals(turn);
+//        } else if (this.equals(A_3)) {
+//            return A_3.equals(turn);
+//        } else if (this.equals(A_4)) {
+//            return A_4.equals(turn);
+//        } else if (this.equals(A_5)) {
+//            return A_5.equals(turn);
+//        } else if (this.equals(A_6)) {
+//            return A_6.equals(turn);
+//        } else if (this.equals(A_7)) {
+//            return A_7.equals(turn);
+//        } else if (this.equals(A_8)) {
+//            return A_8.equals(turn);
+//        } else {
+            return false;
+//        }
     }
 
     public static String performTurn(Cube cube, Turn turn) {

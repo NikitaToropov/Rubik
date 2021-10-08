@@ -1,6 +1,7 @@
 import cube.Cube;
-import enums.Turns;
+import enums.Turn;
 import exceptions.WrongArgumentException;
+import solver.IDAStarSolver;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -8,44 +9,42 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        List<Turns> turns = readingFromInput(args);
+        List<Turn> turns = readingFromInput(args);
         if (turns == null || turns.size() < args.length) {
             return;
         }
+//        turns.forEach(System.out::println);
         /*
-        Commands from input.
-         */
-        turns.forEach(System.out::println);
-        /*
-        Resolved cube.
+        Base cube.
          */
         Cube cube = new Cube();
-        cube.printCube();
+//        cube.printCube();
 
         rotateCubeByTurnsFromInput(cube, turns);
         cube.printCube();
+        IDAStarSolver.solveWithDecomposition(cube);
 
 
     }
 
-    private static void rotateCubeByTurnsFromInput(Cube cube, List<Turns> turns) {
-        for (Turns turn : turns) {
-            System.out.println("===============================================");
-            String turnNotation = Turns.performMove(cube, turn);
-            System.out.println(turnNotation);
-            cube.printCube();
-            System.out.println("===============================================");
+    private static void rotateCubeByTurnsFromInput(Cube cube, List<Turn> turns) {
+        for (Turn turn : turns) {
+//            System.out.println("===============================================");
+            String turnNotation = Turn.performTurn(cube, turn);
+//            System.out.println(turnNotation);
+//            cube.printCube();
+//            System.out.println("===============================================");
         }
     }
 
-    private static List<Turns> readingFromInput(String[] args) {
-        List<Turns> turns = new ArrayList<>();
+    private static List<Turn> readingFromInput(String[] args) {
+        List<Turn> turns = new ArrayList<>();
         for (int i = 0; i < args.length; i++) {
             try {
                 turns.add(getByDescription(args[i]));
             } catch (WrongArgumentException e) {
                 System.out.println("Аргумент номер " + i + " не соответствует ни одной из нотаций:");
-                Arrays.stream(Turns.values()).forEach(t -> System.out.print(t.getNotation() + " "));
+                Arrays.stream(Turn.values()).forEach(t -> System.out.print(t.notation + " "));
                 break;
             }
         }
@@ -54,10 +53,10 @@ public class Main {
                 : turns;
     }
 
-    public static Turns getByDescription(String arg) {
-        Turns[] turns = Turns.values();
-        for (Turns turn : turns) {
-            if (turn.getNotation().equals(arg)) {
+    public static Turn getByDescription(String arg) {
+        Turn[] turns = Turn.values();
+        for (Turn turn : turns) {
+            if (turn.notation.equals(arg)) {
                 return turn;
             }
         }

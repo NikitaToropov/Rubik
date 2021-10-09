@@ -9,33 +9,28 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        List<Turn> turns = readingFromInput(args);
-        if (turns == null || turns.size() < args.length) {
-            return;
+
+        Cube cube = new Cube();
+        try {
+            cube.scramble(Integer.parseInt(args[0]));
+        } catch (RuntimeException e) {
+            List<Turn> turns = readingFromInput(args);
+            if (turns.size() < args.length) {
+                return;
+            }
+            cube.rotateByListTurns(turns);
         }
+
 //        turns.forEach(System.out::println);
         /*
         Base cube.
          */
-        Cube cube = new Cube();
 //        cube.printCube();
 
-        rotateCubeByTurnsFromInput(cube, turns);
 //        cube.printCube();
         IDAStarSolver.solveWithDecomposition(cube);
-
-
     }
 
-    private static void rotateCubeByTurnsFromInput(Cube cube, List<Turn> turns) {
-        for (Turn turn : turns) {
-//            System.out.println("===============================================");
-            String turnNotation = Turn.performTurn(cube, turn);
-//            System.out.println(turnNotation);
-//            cube.printCube();
-//            System.out.println("===============================================");
-        }
-    }
 
     private static List<Turn> readingFromInput(String[] args) {
         List<Turn> turns = new ArrayList<>();
@@ -48,9 +43,7 @@ public class Main {
                 break;
             }
         }
-        return turns.isEmpty()
-                ? null
-                : turns;
+        return turns;
     }
 
     public static Turn getByDescription(String arg) {

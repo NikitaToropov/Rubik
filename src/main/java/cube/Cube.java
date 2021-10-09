@@ -1,7 +1,11 @@
 package cube;
 
+import enums.Turn;
+
+import java.util.List;
+import java.util.Random;
+
 /**
- *                                                                                               *
  *          Solved Cube                              Order Mapping of Pieces                     *
  *                                                                                               *
  *           [U][U][U]                     |              [00][01][02]                           *
@@ -15,21 +19,8 @@ package cube;
  *           [D][D][D]                     |              [45][46][47]                           *
  *           [D][D][D]                     |              [48][49][50]                           *
  *           [D][D][D]                     |              [51][52][53]                           *
- *                                                                                               *
- * ~~~~~~~ The Colors will be represented as follows:                                      ~~~~~ *
- * ~~~~~~~ White  (U): 1   (top)                                                           ~~~~~ *
- * ~~~~~~~ Orange (L): 2   (left)                                                          ~~~~~ *
- * ~~~~~~~ Green  (F): 3   (front)                                                         ~~~~~ *
- * ~~~~~~~ Red    (R): 4   (right)                                                         ~~~~~ *
- * ~~~~~~~ Blue   (B): 5   (back)                                                          ~~~~~ *
- * ~~~~~~~ Yellow (D): 6   (bottom)                                                        ~~~~~ *
  */
-
-
-import java.util.Random;
-
 public class Cube {
-    /* Define the representation of each color in binary                                   ~~~~~ */
     private static final char UP = 'U';
     private static final char DOWN = 'D';
     private static final char LEFT = 'L';
@@ -39,7 +30,7 @@ public class Cube {
 
     private char[] cube;
 
-    private Random random; // TODO смотри реализацию
+    private Random random;
 
     public Cube() {
         this.cube = new char[54];
@@ -782,7 +773,7 @@ public class Cube {
         UP side.
          */
         for (int i = 0; i < 3; i++) {
-            char val1 = this.cube[(i * 3) + 0];
+            char val1 = this.cube[(i * 3)];
             char val2 = this.cube[(i * 3) + 1];
             char val3 = this.cube[(i * 3) + 2];
             System.out.println("           [" + val1 + "][" + val2 + "][" + val3 + "]");
@@ -791,7 +782,7 @@ public class Cube {
         /*
         LEFT, FRONT, RIGHT and BACK sides.
          */
-        for (int i = 0; i < 3; i++) { //Print the middle faces (orange, green, red, blue)
+        for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 4; j++) {
                 char val1 = this.cube[9 + (i * 3) + (j * 9)];
                 char val2 = this.cube[9 + (i * 3) + (j * 9) + 1];
@@ -826,9 +817,9 @@ public class Cube {
     /**
      * Randomizer.
      */
-    public void scramble() {
-        int number_of_turns = random.nextInt(20) + 20;
-        number_of_turns = 20;
+    public void scramble(int number_of_turns) {
+//        int number_of_turns = random.nextInt(20) + 20;
+//        number_of_turns = 20;
         for (int i = 0; i < number_of_turns; i++) {
             int turn = this.random.nextInt(17) + 1;
             switch (turn) {
@@ -908,6 +899,12 @@ public class Cube {
                     System.out.println("Error: Cube.scramble()");
                     break;
             }
+        }
+    }
+
+    public void rotateByListTurns(List<Turn> turns) {
+        for (Turn turn : turns) {
+            String turnNotation = turn.performTurn(this);
         }
     }
 }

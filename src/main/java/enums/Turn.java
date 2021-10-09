@@ -45,8 +45,8 @@ public enum Turn {
         this.code = code;
     }
 
-    public static String performTurn(Cube cube, Turn turn) {
-        switch (turn) {
+    public String performTurn(Cube cube) {
+        switch (this) {
             case FRONT:
                 cube.front();
                 break;
@@ -182,7 +182,7 @@ public enum Turn {
                 cube.up();
                 break;
         }
-        return turn.notation;
+        return notation;
     }
 
     public void undoMove(Cube cube) {

@@ -48,7 +48,7 @@ public class IDAStarSolver {
 
 
         long timeInterval = System.nanoTime() - totalStartTime;
-        System.out.println(" Total working time = " + TimeUnit.NANOSECONDS.toMillis(timeInterval) + " milliseconds");
+        System.out.println(" Total working time = " + TimeUnit.NANOSECONDS.toSeconds(timeInterval) + " seconds");
 
         replaceAlgorithms(turns);
 
@@ -80,7 +80,7 @@ public class IDAStarSolver {
                 continue;
             }
 
-            Turn.performTurn(cube, turn);
+            turn.performTurn(cube);
             turns.push(turn);
 
             double t = IDAStarSearch(cube, turns, step + 1, bound, goal, turn);

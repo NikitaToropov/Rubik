@@ -20,14 +20,6 @@ public class Main {
             }
             cube.rotateByListTurns(turns);
         }
-
-//        turns.forEach(System.out::println);
-        /*
-        Base cube.
-         */
-//        cube.printCube();
-
-//        cube.printCube();
         IDAStarSolver.solveWithDecomposition(cube);
     }
 
@@ -38,7 +30,7 @@ public class Main {
             try {
                 turns.add(getByDescription(args[i]));
             } catch (WrongArgumentException e) {
-                System.out.println("Аргумент номер " + i + " не соответствует ни одной из нотаций:");
+                System.out.println("Аргумент номер по индексу " + i + " не соответствует ни одной из нотаций:");
                 Arrays.stream(Turn.values()).forEach(t -> System.out.print(t.notation + " "));
                 break;
             }

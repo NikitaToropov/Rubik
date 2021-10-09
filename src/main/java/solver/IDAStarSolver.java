@@ -13,10 +13,10 @@ import java.util.concurrent.TimeUnit;
 public class IDAStarSolver {
 
     public static void solveWithDecomposition(Cube cube) {
-        cube.printCube();
+//        cube.printCube();
         ArrayList<Turn> turns = new ArrayList<>();
         Turn lastTurn = null;
-        double bound = 0;
+        double bound;
 
         long totalStartTime = System.nanoTime();
         for (Goal goal : Goal.values()) {
@@ -25,19 +25,9 @@ public class IDAStarSolver {
             bound = heuristic(cube);
 
             while (true) {
-                double t = IDAStarSearch(cube, turnStack, 0, bound, goal, lastTurn); // todo сделать очевиднее переменную 't'
-
-
-                if (t == -1) { //solution is found
-                    break;
-                }
-                bound = t; //else increase bound and search again.
-                if (t == -2) { //error occured (to many state checks);
-                    break;
-                }
-            }
-            if (bound == -2) {
-                break; //exit because of state overflow
+                double treshold = IDAStarSearch(cube, turnStack, 0, bound, goal, lastTurn);
+                if (treshold < 0) break; //solution is found
+                bound = treshold; //else increase bound and search again.
             }
 
             //create arraylist to transfer moves from the stack.
@@ -46,14 +36,17 @@ public class IDAStarSolver {
             while (!turnStack.isEmpty()) { //copy each move used to solve this subgoal
                 this_goals_turns.add(0, turnStack.pop()); //add to front to invert stack order
             }
-            this_goals_turns.forEach(t -> System.out.printf(t.notation + " "));
-            System.out.println();
+//            this_goals_turns.forEach(t -> System.out.printf(t.notation + " "));
+//            System.out.println();
             turns.addAll(this_goals_turns); //add all moves from this goal to the master list
             if (!turns.isEmpty()) lastTurn = turns.get(turns.size() - 1);
             long timeInterval = System.nanoTime() - startTime;
             System.out.println(goal + " Working time = " + TimeUnit.NANOSECONDS.toMillis(timeInterval) + " milliseconds");
             System.out.println();
         }
+
+
+
         long timeInterval = System.nanoTime() - totalStartTime;
         System.out.println(" Total working time = " + TimeUnit.NANOSECONDS.toMillis(timeInterval) + " milliseconds");
 
@@ -107,9 +100,6 @@ public class IDAStarSolver {
         return min;
     }
 
-    /**
-     * TODO double нужно будет заменить на int, если не буду добавлять деление.
-     */
     private static double heuristic(Cube cube) {
         double val = 20;
         if (CubeGoalRealisation.piece1(cube)) val--;
@@ -137,9 +127,6 @@ public class IDAStarSolver {
     }
 
     private static void replaceAlgorithms(ArrayList<Turn> turns) {
-        /*
-        TODO  нужно перепроверить замену
-         */
         Turn[] A1 = {Turn.RIGHT_REVERSE, Turn.DOWN_REVERSE, Turn.RIGHT, Turn.DOWN, Turn.RIGHT_REVERSE, Turn.DOWN_REVERSE, Turn.RIGHT, Turn.DOWN};
         Turn[] A2 = {Turn.BACK_REVERSE, Turn.DOWN_REVERSE, Turn.BACK, Turn.DOWN, Turn.BACK_REVERSE, Turn.DOWN_REVERSE, Turn.BACK, Turn.DOWN};
         Turn[] A3 = {Turn.LEFT_REVERSE, Turn.DOWN_REVERSE, Turn.LEFT, Turn.DOWN, Turn.LEFT_REVERSE, Turn.DOWN_REVERSE, Turn.LEFT, Turn.DOWN};

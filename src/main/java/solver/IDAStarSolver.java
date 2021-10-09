@@ -1,7 +1,7 @@
 package solver;
 
 import cube.Cube;
-import cube.Rubiks_Cube_Goals_V2;
+import cube.CubeGoalRealisation;
 import enums.Goal;
 import enums.Turn;
 
@@ -112,26 +112,26 @@ public class IDAStarSolver {
      */
     private static double heuristic(Cube cube) {
         double val = 20;
-        if (Rubiks_Cube_Goals_V2.piece1(cube)) val--;
-        if (Rubiks_Cube_Goals_V2.piece2(cube)) val--;
-        if (Rubiks_Cube_Goals_V2.piece3(cube)) val--;
-        if (Rubiks_Cube_Goals_V2.piece4(cube)) val--;
-        if (Rubiks_Cube_Goals_V2.piece5(cube)) val--;
-        if (Rubiks_Cube_Goals_V2.piece6(cube)) val--;
-        if (Rubiks_Cube_Goals_V2.piece7(cube)) val--;
-        if (Rubiks_Cube_Goals_V2.piece8(cube)) val--;
-        if (Rubiks_Cube_Goals_V2.piece9(cube)) val--;
-        if (Rubiks_Cube_Goals_V2.piece10(cube)) val--;
-        if (Rubiks_Cube_Goals_V2.piece11(cube)) val--;
-        if (Rubiks_Cube_Goals_V2.piece12(cube)) val--;
-        if (Rubiks_Cube_Goals_V2.piece13(cube)) val--;
-        if (Rubiks_Cube_Goals_V2.piece14(cube)) val--;
-        if (Rubiks_Cube_Goals_V2.piece15(cube)) val--;
-        if (Rubiks_Cube_Goals_V2.piece16(cube)) val--;
-        if (Rubiks_Cube_Goals_V2.piece17(cube)) val--;
-        if (Rubiks_Cube_Goals_V2.piece18(cube)) val--;
-        if (Rubiks_Cube_Goals_V2.piece19(cube)) val--;
-        if (Rubiks_Cube_Goals_V2.piece20(cube)) val--;
+        if (CubeGoalRealisation.piece1(cube)) val--;
+        if (CubeGoalRealisation.piece2(cube)) val--;
+        if (CubeGoalRealisation.piece3(cube)) val--;
+        if (CubeGoalRealisation.piece4(cube)) val--;
+        if (CubeGoalRealisation.piece5(cube)) val--;
+        if (CubeGoalRealisation.piece6(cube)) val--;
+        if (CubeGoalRealisation.piece7(cube)) val--;
+        if (CubeGoalRealisation.piece8(cube)) val--;
+        if (CubeGoalRealisation.piece9(cube)) val--;
+        if (CubeGoalRealisation.piece10(cube)) val--;
+        if (CubeGoalRealisation.piece11(cube)) val--;
+        if (CubeGoalRealisation.piece12(cube)) val--;
+        if (CubeGoalRealisation.piece13(cube)) val--;
+        if (CubeGoalRealisation.piece14(cube)) val--;
+        if (CubeGoalRealisation.piece15(cube)) val--;
+        if (CubeGoalRealisation.piece16(cube)) val--;
+        if (CubeGoalRealisation.piece17(cube)) val--;
+        if (CubeGoalRealisation.piece18(cube)) val--;
+        if (CubeGoalRealisation.piece19(cube)) val--;
+        if (CubeGoalRealisation.piece20(cube)) val--;
 
         return val;
     }

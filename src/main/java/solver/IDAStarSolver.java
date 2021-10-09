@@ -21,21 +21,13 @@ public class IDAStarSolver {
         Turn lastTurn = null;
         double bound = 0;
 
-//		for (int i = 0; i < goals.length; i++) {
-
         long totalStartTime = System.nanoTime();
         for (Goal goal : Goal.values()) {
             long startTime = System.nanoTime();
-
-            /*
-            todo stack подходит оствь, не подходит, замени
-             */
             Stack<Turn> turnStack = new Stack<>();
             bound = heuristic(cube);
 
-            int thisShouldBeDelete = 0;
             while (true) {
-                thisShouldBeDelete++;
                 double t = IDAStarSearch(cube, turnStack, 0, bound, goal, lastTurn); // todo сделать очевиднее переменную 't'
 
 
@@ -47,7 +39,6 @@ public class IDAStarSolver {
                     break;
                 }
             }
-            System.out.println("This should be delete = " + thisShouldBeDelete);
             if (bound == -2) {
                 break; //exit because of state overflow
             }
@@ -61,7 +52,7 @@ public class IDAStarSolver {
             this_goals_turns.forEach(t -> System.out.printf(t.notation + " "));
             System.out.println();
             turns.addAll(this_goals_turns); //add all moves from this goal to the master list
-            lastTurn = turns.get(turns.size() - 1);
+            if (!turns.isEmpty()) lastTurn = turns.get(turns.size() - 1);
             long timeInterval = System.nanoTime() - startTime;
             System.out.println(goal + " Working time = " + TimeUnit.NANOSECONDS.toMillis(timeInterval) + " milliseconds");
             System.out.println();

@@ -3,44 +3,46 @@ package enums;
 import cube.Cube;
 
 public enum Turn {
-    FRONT("F", false),
-    FRONT_DOUBLE("F2", false),
-    FRONT_REVERSE("F'", false),
+    FRONT("F", false, 0),
+    FRONT_DOUBLE("F2", false, 1),
+    FRONT_REVERSE("F'", false, 2),
 
-    BACK("B", false),
-    BACK_DOUBLE("B2", false),
-    BACK_REVERSE("B'", false),
+    BACK("B", false, 3),
+    BACK_DOUBLE("B2", false, 4),
+    BACK_REVERSE("B'", false, 5),
 
-    UP("U", false),
-    UP_DOUBLE("U2", false),
-    UP_REVERSE("U'", false),
+    UP("U", false, 6),
+    UP_DOUBLE("U2", false, 7),
+    UP_REVERSE("U'", false, 8),
 
-    DOWN("D", false),
-    DOWN_DOUBLE("D2", false),
-    DOWN_REVERSE("D'", false),
+    DOWN("D", false, 9),
+    DOWN_DOUBLE("D2", false, 10),
+    DOWN_REVERSE("D'", false, 11),
 
-    RIGHT("R", false),
-    RIGHT_DOUBLE("R2", false),
-    RIGHT_REVERSE("R'", false),
+    RIGHT("R", false, 12),
+    RIGHT_DOUBLE("R2", false, 13),
+    RIGHT_REVERSE("R'", false, 14),
 
-    LEFT("L", false),
-    LEFT_DOUBLE("L2", false),
-    LEFT_REVERSE("L'", false),
-    A_1("A1", true),
-    A_2("A2", true),
-    A_3("A3", true),
-    A_4("A4", true),
-    A_5("A5", true),
-    A_6("A6", true),
-    A_7("A7", true),
-    A_8("A8", true);
+    LEFT("L", false, 15),
+    LEFT_DOUBLE("L2", false, 16),
+    LEFT_REVERSE("L'", false, 17),
+    A_1("A1", true, 18),
+    A_2("A2", true, 19),
+    A_3("A3", true, 20),
+    A_4("A4", true, 21),
+    A_5("A5", true, 22),
+    A_6("A6", true, 23),
+    A_7("A7", true, 24),
+    A_8("A8", true, 25);
 
     public final String notation;
     public final boolean special;
+    public final int code;
 
-    Turn(String name, boolean special) {
+    Turn(String name, boolean special, int code) {
         this.notation = name;
         this.special = special;
+        this.code = code;
     }
 
     public boolean isConflict(Turn turn) {

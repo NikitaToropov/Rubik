@@ -58,8 +58,10 @@ public class IDAStarSolver {
             while (!turnStack.isEmpty()) { //copy each move used to solve this subgoal
                 this_goals_turns.add(0, turnStack.pop()); //add to front to invert stack order
             }
+            this_goals_turns.forEach(t -> System.out.printf(t.notation + " "));
+            System.out.println();
             turns.addAll(this_goals_turns); //add all moves from this goal to the master list
-
+            lastTurn = turns.get(turns.size() - 1);
             long timeInterval = System.nanoTime() - startTime;
             System.out.println(goal + " Working time = " + TimeUnit.NANOSECONDS.toMillis(timeInterval) + " milliseconds");
             System.out.println();
@@ -99,7 +101,8 @@ public class IDAStarSolver {
             if (turn.special && !specialGoal) {
                 break;
             }
-            if (turn.isConflict(lastTurn)) {
+//            if (turn.isConflict(lastTurn)) {
+            if(lastTurn != null && turn.code/3 == lastTurn.code/3) {
                 continue;
             }
             stateCount++; // todo проверить возможность укоротить код и инкрементить в условии

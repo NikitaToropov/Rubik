@@ -21,7 +21,7 @@ public class Main {
 //        cube.printCube();
 
         rotateCubeByTurnsFromInput(cube, turns);
-        cube.printCube();
+//        cube.printCube();
         IDAStarSolver.solveWithDecomposition(cube);
 
 

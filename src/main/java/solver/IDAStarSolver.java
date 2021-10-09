@@ -16,20 +16,26 @@ public class IDAStarSolver {
     private static int stateCount = 0;
 
     public static void solveWithDecomposition(Cube cube) {
+        cube.printCube();
         ArrayList<Turn> turns = new ArrayList<>();
         Turn lastTurn = null;
         double bound = 0;
-        long startTime = System.nanoTime();
 
 //		for (int i = 0; i < goals.length; i++) {
+
+        long totalStartTime = System.nanoTime();
         for (Goal goal : Goal.values()) {
+            long startTime = System.nanoTime();
+
             /*
             todo stack подходит оствь, не подходит, замени
              */
             Stack<Turn> turnStack = new Stack<>();
             bound = heuristic(cube);
 
+            int thisShouldBeDelete = 0;
             while (true) {
+                thisShouldBeDelete++;
                 double t = IDAStarSearch(cube, turnStack, 0, bound, goal, lastTurn); // todo сделать очевиднее переменную 't'
 
 
@@ -41,6 +47,7 @@ public class IDAStarSolver {
                     break;
                 }
             }
+            System.out.println("This should be delete = " + thisShouldBeDelete);
             if (bound == -2) {
                 break; //exit because of state overflow
             }
@@ -52,33 +59,21 @@ public class IDAStarSolver {
                 this_goals_turns.add(0, turnStack.pop()); //add to front to invert stack order
             }
             turns.addAll(this_goals_turns); //add all moves from this goal to the master list
-            //Display report
-//			if(VERBOSE){
-//				System.out.println("Solved Goal: " + goals[i]);
-//				System.out.println("Current Number of States searched: " + stateCount);
-//				System.out.println("Current Number of Moves: " + turns.size());
-//				System.out.println("This Goals Move: " + this_goals_turns);
-//				cube.printCube();
-//				System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-//			}
+
+            long timeInterval = System.nanoTime() - startTime;
+            System.out.println(goal + " Working time = " + TimeUnit.NANOSECONDS.toMillis(timeInterval) + " milliseconds");
+            System.out.println();
         }
+        long timeInterval = System.nanoTime() - totalStartTime;
+        System.out.println(" Total working time = " + TimeUnit.NANOSECONDS.toMillis(timeInterval) + " milliseconds");
         if (bound == -2) { //if state search overflow
             System.out.println("The Search explored " + MAX_STATE_COUNT + " states and did not");
             System.out.println("find a solution. Decomposition aborted");
             return;
         }
-        //Some goals use algorithms as a single move duiring IDA*. Convert these back to
-        //orignal 18 moves.
         replaceAlgorithms(turns);
-        long timeInterval = System.nanoTime() - startTime;
-        System.out.println("Working time = " + TimeUnit.NANOSECONDS.toSeconds(timeInterval) + " seconds");
-        System.out.println("================= REPORT ENDS HERE ================");
-//		if(VERBOSE)System.out.println("This Search explored " + stateCount + " states.");
-        //Display Solution
+
         System.out.println("SOLUTION: (" + turns.size() + " moves)\n");
-//        for (int i = 0; i < turns.size() / 10; i++) {
-//            turns.add(10 + (i * 10), "\n");
-//        }
         for (Turn turn : turns) {
             System.out.print(turn.notation + " ");
         }
@@ -100,6 +95,7 @@ public class IDAStarSolver {
         double min = -1; // resolved by default.
 
         for (Turn turn : Turn.values()) {
+
             if (turn.special && !specialGoal) {
                 break;
             }
@@ -127,6 +123,7 @@ public class IDAStarSolver {
             turns.pop();
 
             turn.undoMove(cube);
+
         }
         return min;
     }
@@ -160,9 +157,6 @@ public class IDAStarSolver {
         return val;
     }
 
-
-    /* This function replaces an Algorithm in the ArrayList of strings with all of the     ~~~~~ *
-     * turns.                                                                              ~~~~~ */
     private static void replaceAlgorithms(ArrayList<Turn> turns) {
         /*
         TODO  нужно перепроверить замену

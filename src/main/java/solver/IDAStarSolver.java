@@ -12,9 +12,6 @@ import java.util.concurrent.TimeUnit;
 
 public class IDAStarSolver {
 
-    private static final int MAX_STATE_COUNT = 1000000000;
-    private static int stateCount = 0;
-
     public static void solveWithDecomposition(Cube cube) {
         cube.printCube();
         ArrayList<Turn> turns = new ArrayList<>();
@@ -59,11 +56,7 @@ public class IDAStarSolver {
         }
         long timeInterval = System.nanoTime() - totalStartTime;
         System.out.println(" Total working time = " + TimeUnit.NANOSECONDS.toMillis(timeInterval) + " milliseconds");
-        if (bound == -2) { //if state search overflow
-            System.out.println("The Search explored " + MAX_STATE_COUNT + " states and did not");
-            System.out.println("find a solution. Decomposition aborted");
-            return;
-        }
+
         replaceAlgorithms(turns);
 
         System.out.println("SOLUTION: (" + turns.size() + " moves)\n");
@@ -85,25 +78,17 @@ public class IDAStarSolver {
         }
 
         boolean specialGoal = Goal.SOLVED.equals(goal) || Goal.THIRD_LAYER_1_CORNER.equals(goal);
-        double min = -1; // resolved by default.
-
+        double min = -1;
         for (Turn turn : Turn.values()) {
-
             if (turn.special && !specialGoal) {
                 break;
             }
-//            if (turn.isConflict(lastTurn)) {
-            if(lastTurn != null && turn.code/3 == lastTurn.code/3) {
+            if (lastTurn != null && turn.code / 3 == lastTurn.code / 3) {
                 continue;
             }
-            stateCount++; // todo проверить возможность укоротить код и инкрементить в условии
 
-            if (stateCount >= MAX_STATE_COUNT) {  //todo - нахуй не нужно
-                return -2;
-            }
-
-            turns.push(turn);
             Turn.performTurn(cube, turn);
+            turns.push(turn);
 
             double t = IDAStarSearch(cube, turns, step + 1, bound, goal, turn);
 

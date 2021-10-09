@@ -45,55 +45,6 @@ public enum Turn {
         this.code = code;
     }
 
-    public boolean isConflict(Turn turn) {
-        if (this.equals(turn))
-            return true;
-
-        if (this.equals(FRONT) || this.equals(FRONT_DOUBLE) || this.equals(FRONT_REVERSE)) {
-            return FRONT.equals(turn) || FRONT_DOUBLE.equals(turn) || FRONT_REVERSE.equals(turn);
-        } else if (this.equals(BACK) || this.equals(BACK_DOUBLE) || this.equals(BACK_REVERSE)) {
-            return BACK.equals(turn) || BACK_DOUBLE.equals(turn) || BACK_REVERSE.equals(turn);
-        } else if (this.equals(RIGHT) || this.equals(RIGHT_DOUBLE) || this.equals(RIGHT_REVERSE)) {
-            return RIGHT.equals(turn) || RIGHT_DOUBLE.equals(turn) || RIGHT_REVERSE.equals(turn);
-        } else if (this.equals(LEFT) || this.equals(LEFT_DOUBLE) || this.equals(LEFT_REVERSE)) {
-            return LEFT.equals(turn) || LEFT_DOUBLE.equals(turn) || LEFT_REVERSE.equals(turn);
-        } else if (this.equals(UP) || this.equals(UP_DOUBLE) || this.equals(UP_REVERSE)) {
-            return UP.equals(turn) || UP_DOUBLE.equals(turn) || UP_REVERSE.equals(turn);
-        } else if (this.equals(DOWN) || this.equals(DOWN_DOUBLE) || this.equals(DOWN_REVERSE)) {
-            return DOWN.equals(turn) || DOWN_DOUBLE.equals(turn) || DOWN_REVERSE.equals(turn);
-        }
-
-        /*
-        TODO тут можно поэксперементировать!!!
-         */
-        else if (this.equals(A_1) || this.equals(A_2) || this.equals(A_3)) {
-            return A_1.equals(turn) || A_2.equals(turn) || A_3.equals(turn);
-        } else if (this.equals(A_4) || this.equals(A_5) || this.equals(A_6)) {
-            return A_4.equals(turn) || A_5.equals(turn) || A_6.equals(turn);
-        } else if (this.equals(A_7) || this.equals(A_8)) {
-            return A_7.equals(turn) || A_8.equals(turn);
-        }
-//        else if (this.equals(A_1)) {
-//            return A_1.equals(turn);
-//        } else if (this.equals(A_2)) {
-//            return A_2.equals(turn);
-//        } else if (this.equals(A_3)) {
-//            return A_3.equals(turn);
-//        } else if (this.equals(A_4)) {
-//            return A_4.equals(turn);
-//        } else if (this.equals(A_5)) {
-//            return A_5.equals(turn);
-//        } else if (this.equals(A_6)) {
-//            return A_6.equals(turn);
-//        } else if (this.equals(A_7)) {
-//            return A_7.equals(turn);
-//        } else if (this.equals(A_8)) {
-//            return A_8.equals(turn);
-//        } else {
-            return false;
-//        }
-    }
-
     public static String performTurn(Cube cube, Turn turn) {
         switch (turn) {
             case FRONT:
@@ -370,7 +321,6 @@ public enum Turn {
                 cube.up();
                 cube.front();
                 break;
-
         }
     }
 }

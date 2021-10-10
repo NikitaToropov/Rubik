@@ -716,7 +716,7 @@ public class Cube {
         System.out.println("");
     }
 
-    public char getFaceletColor(int facelet_index) {
+    public char getFAce(int facelet_index) {
         if (facelet_index >= 0 && facelet_index < 54) {
             return this.cube[facelet_index];
         }
@@ -724,80 +724,65 @@ public class Cube {
     }
 
     public void scramble(int turnsNumber) {
-
+        if (turnsNumber < 0) {
+            return;
+        }
+        turnsNumber = turnsNumber < 10 ? turnsNumber : turnsNumber - 10;
         for (int i = 0; i < turnsNumber; i++) {
             int turn = this.random.nextInt(17) + 1;
             switch (turn) {
                 case 1:
-                    System.out.println("F");
                     front();
                     break;
                 case 2:
-                    System.out.println("F2");
                     frontDouble();
                     break;
                 case 3:
-                    System.out.println("F'");
                     frontReverse();
                     break;
                 case 4:
-                    System.out.println("B");
                     back();
                     break;
                 case 5:
-                    System.out.println("B2");
                     backDouble();
                     break;
                 case 6:
-                    System.out.println("B'");
                     backReverse();
                     break;
                 case 7:
-                    System.out.println("L");
                     left();
                     break;
                 case 8:
-                    System.out.println("L2");
                     leftDouble();
                     break;
                 case 9:
-                    System.out.println("L'");
                     leftReverse();
                     break;
                 case 10:
-                    System.out.println("R");
                     right();
                     break;
                 case 11:
-                    System.out.println("R2");
                     rightDouble();
                     break;
                 case 12:
-                    System.out.println("R'");
                     rightReverse();
                     break;
                 case 13:
-                    System.out.println("U");
                     up();
                     break;
                 case 14:
-                    System.out.println("U2");
                     upDouble();
                     break;
                 case 15:
-                    System.out.println("U'");
                     upReverse();
                     break;
                 case 16:
-                    System.out.println("D");
                     down();
                     break;
                 case 17:
-                    System.out.println("D2");
                     downDouble();
                     break;
                 case 18:
-                    System.out.println("D'");
                     downReverse();
                     break;
                 default:

@@ -19,6 +19,12 @@ public class MainTest {
     }
 
     @Test(description = "Запуск с рандомным кубиком, запутанным на 30 поворотов.")
+    public void test5RandomMoves() {
+        String[] args = {"5"};
+        Main.main(args);
+    }
+
+    @Test(description = "Запуск с рандомным кубиком, запутанным на 30 поворотов.")
     public void test30RandomMoves() {
         String[] args = {"30"};
         Main.main(args);
@@ -27,6 +33,12 @@ public class MainTest {
     @Test(description = "Запуск с рандомным кубиком, запутанным на 20 поворотов.")
     public void test20RandomMoves() {
         String[] args = {"20"};
+        Main.main(args);
+    }
+
+    @Test(description = "Запуск отрицаетельным числом поворотов 20 поворотов.")
+    public void testRandomMoves() {
+        String[] args = {"-20"};
         Main.main(args);
     }
 }

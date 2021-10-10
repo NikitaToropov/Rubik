@@ -1,45 +1,41 @@
 
 public enum Turn {
-    FRONT("F", false, 0),
-    FRONT_DOUBLE("F2", false, 1),
-    FRONT_REVERSE("F'", false, 2),
+    FRONT("F"),
+    FRONT_DOUBLE("F2"),
+    FRONT_REVERSE("F'"),
 
-    BACK("B", false, 3),
-    BACK_DOUBLE("B2", false, 4),
-    BACK_REVERSE("B'", false, 5),
+    BACK("B"),
+    BACK_DOUBLE("B2"),
+    BACK_REVERSE("B'"),
 
-    UP("U", false, 6),
-    UP_DOUBLE("U2", false, 7),
-    UP_REVERSE("U'", false, 8),
+    UP("U"),
+    UP_DOUBLE("U2"),
+    UP_REVERSE("U'"),
 
-    DOWN("D", false, 9),
-    DOWN_DOUBLE("D2", false, 10),
-    DOWN_REVERSE("D'", false, 11),
+    DOWN("D"),
+    DOWN_DOUBLE("D2"),
+    DOWN_REVERSE("D'"),
 
-    RIGHT("R", false, 12),
-    RIGHT_DOUBLE("R2", false, 13),
-    RIGHT_REVERSE("R'", false, 14),
+    RIGHT("R"),
+    RIGHT_DOUBLE("R2"),
+    RIGHT_REVERSE("R'"),
 
-    LEFT("L", false, 15),
-    LEFT_DOUBLE("L2", false, 16),
-    LEFT_REVERSE("L'", false, 17),
-    A_1("A1", true, 18),
-    A_2("A2", true, 19),
-    A_3("A3", true, 20),
-    A_4("A4", true, 21),
-    A_5("A5", true, 22),
-    A_6("A6", true, 23),
-    A_7("A7", true, 24),
-    A_8("A8", true, 25);
+    LEFT("L"),
+    LEFT_DOUBLE("L2"),
+    LEFT_REVERSE("L'"),
+    A_1("A1"),
+    A_2("A2"),
+    A_3("A3"),
+    A_4("A4"),
+    A_5("A5"),
+    A_6("A6"),
+    A_7("A7"),
+    A_8("A8");
 
     public final String notation;
-    public final boolean special;
-    public final int code;
 
-    Turn(String name, boolean special, int code) {
+    Turn(String name) {
         this.notation = name;
-        this.special = special;
-        this.code = code;
     }
 
     public String performTurn(Cube cube) {

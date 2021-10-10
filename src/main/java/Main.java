@@ -3,8 +3,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Main {
-    private static final Goal[] DECOMPOSITION = IDAStarResolver.IMPROVED_FRIEDRICH_DECOMPOSITION;
-
+        private static final Goal[] DECOMPOSITION = IDAStarResolver.IMPROVED_FRIEDRICH_DECOMPOSITION;
     //    private static final Goal[] DECOMPOSITION = IDAStarResolver.HUMAN_LIKE_DECOMPOSITION;
     public static void main(String args[]) {
         Cube cube = new Cube(); //initialize cube.

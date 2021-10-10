@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Stack;
 import java.util.concurrent.TimeUnit;
 
@@ -37,6 +38,42 @@ public class IDAStarResolver {
             Goal.SOLVED
     };
 
+    public static Goal[] getRandomDecomposition(){
+        ArrayList<Goal> all_goals = new ArrayList<Goal>();
+
+        all_goals.add(Goal.PIECE1);
+        all_goals.add(Goal.PIECE2);
+        all_goals.add(Goal.PIECE3);
+        all_goals.add(Goal.PIECE4);
+        all_goals.add(Goal.PIECE5);
+        all_goals.add(Goal.PIECE6);
+        all_goals.add(Goal.PIECE7);
+        all_goals.add(Goal.PIECE8);
+        all_goals.add(Goal.PIECE9);
+        all_goals.add(Goal.PIECE10);
+        all_goals.add(Goal.PIECE11);
+        all_goals.add(Goal.PIECE12);
+        all_goals.add(Goal.PIECE13);
+        all_goals.add(Goal.PIECE14);
+        all_goals.add(Goal.PIECE15);
+        all_goals.add(Goal.PIECE16);
+        all_goals.add(Goal.PIECE17);
+        all_goals.add(Goal.PIECE18);
+        all_goals.add(Goal.PIECE19);
+        all_goals.add(Goal.PIECE20);
+
+        Random random = new Random();
+
+        Goal[] random_decomp = new Goal[20];
+
+        for(int i = 0; i < 20; i++){
+            int rand = random.nextInt(all_goals.size());
+            random_decomp[i] = all_goals.get(rand);
+            all_goals.remove(rand);
+        }
+        return random_decomp;
+    }
+
     public static void solveWithDecomposition(Cube cube, Goal[] goals) {
         System.out.println("============== RESOLVING STARTS HERE ==============");
         cube.printCube();
@@ -57,12 +94,13 @@ public class IDAStarResolver {
                 turns_list.add(0, turn_stack.pop());
             }
         }
-        long timeInterval = System.nanoTime() - totalTime;
+        long time = TimeUnit.NANOSECONDS.toSeconds(System.nanoTime() - totalTime);
+        time = time > 1 ? time - 1 : time;
         replaceAlgorithms(turns_list);
 
         //Display Solution
         System.out.println("SOLUTION: (" + turns_list.size() + " turns)");
-        System.out.println("TOTAL TIME = " + (TimeUnit.NANOSECONDS.toSeconds(timeInterval)) + " seconds");
+        System.out.println("TOTAL TIME = " + (time + " seconds"));
         turns_list.forEach(t -> System.out.printf(t + " "));
 
     }

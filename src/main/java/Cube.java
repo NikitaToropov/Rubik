@@ -733,63 +733,83 @@ public class Cube {
             switch (turn) {
                 case 1:
                     front();
+                    System.out.println(Turn.FRONT.notation);
                     break;
                 case 2:
+                    System.out.println(Turn.FRONT_DOUBLE.notation);
                     frontDouble();
                     break;
                 case 3:
+                    System.out.println(Turn.FRONT_REVERSE.notation);
                     frontReverse();
                     break;
                 case 4:
+                    System.out.println(Turn.BACK.notation);
                     back();
                     break;
                 case 5:
+                    System.out.println(Turn.BACK_DOUBLE.notation);
                     backDouble();
                     break;
                 case 6:
+                    System.out.println(Turn.BACK_REVERSE.notation);
                     backReverse();
                     break;
                 case 7:
+                    System.out.println(Turn.LEFT.notation);
                     left();
                     break;
                 case 8:
+                    System.out.println(Turn.LEFT_DOUBLE.notation);
                     leftDouble();
                     break;
                 case 9:
+                    System.out.println(Turn.LEFT_REVERSE.notation);
                     leftReverse();
                     break;
                 case 10:
+                    System.out.println(Turn.RIGHT.notation);
                     right();
                     break;
                 case 11:
+                    System.out.println(Turn.RIGHT_DOUBLE.notation);
                     rightDouble();
                     break;
                 case 12:
+                    System.out.println(Turn.RIGHT_REVERSE.notation);
                     rightReverse();
                     break;
                 case 13:
+                    System.out.println(Turn.UP.notation);
                     up();
                     break;
                 case 14:
+                    System.out.println(Turn.UP_DOUBLE.notation);
                     upDouble();
                     break;
                 case 15:
+                    System.out.println(Turn.UP_REVERSE.notation);
                     upReverse();
                     break;
                 case 16:
+                    System.out.println(Turn.DOWN.notation);
                     down();
                     break;
                 case 17:
+                    System.out.println(Turn.DOWN_DOUBLE.notation);
                     downDouble();
                     break;
                 case 18:
+                    System.out.println(Turn.DOWN_REVERSE.notation);
                     downReverse();
                     break;
                 default:
                     System.out.println("Error: Cube.scramble()");
                     break;
             }
+            printCube();
         }
+
     }
 
     public void rotateByListTurns(List<Turn> turns) {

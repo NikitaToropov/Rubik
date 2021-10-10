@@ -1,6 +1,3 @@
-package enums;
-
-import cube.Cube;
 
 public enum Turn {
     FRONT("F", false, 0),

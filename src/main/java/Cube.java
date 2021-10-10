@@ -1,32 +1,13 @@
-package cube;
-
-import enums.Turn;
-
 import java.util.List;
 import java.util.Random;
 
-/**
- *          Solved Cube                              Order Mapping of Pieces                     *
- *                                                                                               *
- *           [U][U][U]                     |              [00][01][02]                           *
- *           [U][U][U]                     |              [03][04][05]                           *
- *           [U][U][U]                     |              [06][07][08]                           *
- *                                         |                                                     *
- * [L][L][L] [F][F][F] [R][R][R] [B][B][B] | [09][10][11] [18][19][20] [27][28][29] [36][37][38] *
- * [L][L][L] [F][F][F] [R][R][R] [B][B][B] | [12][13][14] [21][22][23] [30][31][32] [39][40][41] *
- * [L][L][L] [F][F][F] [R][R][R] [B][B][B] | [15][16][17] [24][25][26] [33][34][35] [42][43][44] *
- *                                         |                                                     *
- *           [D][D][D]                     |              [45][46][47]                           *
- *           [D][D][D]                     |              [48][49][50]                           *
- *           [D][D][D]                     |              [51][52][53]                           *
- */
 public class Cube {
     private static final char UP = 'U';
-    private static final char DOWN = 'D';
     private static final char LEFT = 'L';
-    private static final char RIGHT = 'R';
     private static final char FRONT = 'F';
+    private static final char RIGHT = 'R';
     private static final char BACK = 'B';
+    private static final char DOWN = 'D';
 
     private char[] cube;
 
@@ -38,9 +19,6 @@ public class Cube {
         this.random = new Random();
     }
 
-    /**
-     * FRONT rotation.
-     */
     public void front() {
         char temp = this.cube[6];
         this.cube[6] = this.cube[17];
@@ -73,9 +51,6 @@ public class Cube {
         this.cube[23] = temp;
     }
 
-    /**
-     * 2 FRONT rotations.
-     */
     public void frontDouble() {
         char temp = this.cube[6];
         this.cube[6] = this.cube[47];
@@ -118,9 +93,6 @@ public class Cube {
         this.cube[23] = temp;
     }
 
-    /**
-     * REVERSE FRONT rotation.
-     */
     public void frontReverse() {
         char temp = this.cube[6];
         this.cube[6] = this.cube[27];
@@ -153,9 +125,6 @@ public class Cube {
         this.cube[21] = temp;
     }
 
-    /**
-     * BACK rotation.
-     */
     public void back() {
         char temp = this.cube[0];
         this.cube[0] = this.cube[29];
@@ -188,9 +157,6 @@ public class Cube {
         this.cube[41] = temp;
     }
 
-    /**
-     * 2 BACK rotations.
-     */
     public void backDouble() {
         char temp = this.cube[0];
         this.cube[0] = this.cube[53];
@@ -233,9 +199,6 @@ public class Cube {
         this.cube[42] = temp;
     }
 
-    /**
-     * REVERSE BACK rotation.
-     */
     public void backReverse() {
         char temp = this.cube[0];
         this.cube[0] = this.cube[15];
@@ -268,9 +231,6 @@ public class Cube {
         this.cube[39] = temp;
     }
 
-    /**
-     * LEFT rotation.
-     */
     public void left() {
         char temp = this.cube[0];
         this.cube[0] = this.cube[44];
@@ -303,9 +263,6 @@ public class Cube {
         this.cube[14] = temp;
     }
 
-    /**
-     * 2 LEFT rotation.
-     */
     public void leftDouble() {
         char temp = this.cube[0];
         this.cube[0] = this.cube[45];
@@ -348,9 +305,6 @@ public class Cube {
         this.cube[14] = temp;
     }
 
-    /**
-     * REVERSE LEFT rotation.
-     */
     public void leftReverse() {
         char temp = this.cube[0];
         this.cube[0] = this.cube[18];
@@ -383,9 +337,6 @@ public class Cube {
         this.cube[12] = temp;
     }
 
-    /**
-     * RIGHT rotation.
-     */
     public void right() {
         char temp = this.cube[2];
         this.cube[2] = this.cube[20];
@@ -418,9 +369,6 @@ public class Cube {
         this.cube[32] = temp;
     }
 
-    /**
-     * 2 RIGHT rotations.
-     */
     public void rightDouble() {
         char temp = this.cube[2];
         this.cube[2] = this.cube[47];
@@ -463,9 +411,6 @@ public class Cube {
         this.cube[29] = temp;
     }
 
-    /**
-     * REVERSE RIGHT rotation.
-     */
     public void rightReverse() {
         char temp = this.cube[2];
         this.cube[2] = this.cube[42];
@@ -498,9 +443,6 @@ public class Cube {
         this.cube[30] = temp;
     }
 
-    /**
-     * UP rotation.
-     */
     public void up() {
         char temp = this.cube[9];
         this.cube[9] = this.cube[18];
@@ -533,9 +475,6 @@ public class Cube {
         this.cube[5] = temp;
     }
 
-    /**
-     * 2 UP rotations.
-     */
     public void upDouble() {
         char temp = this.cube[9];
         this.cube[9] = this.cube[27];
@@ -578,9 +517,6 @@ public class Cube {
         this.cube[6] = temp;
     }
 
-    /**
-     * REVERSE UP rotation.
-     */
     public void upReverse() {
         char temp = this.cube[9];
         this.cube[9] = this.cube[36];
@@ -613,9 +549,6 @@ public class Cube {
         this.cube[3] = temp;
     }
 
-    /**
-     * DOWN rotation.
-     */
     public void down() {
         char temp = this.cube[15];
         this.cube[15] = this.cube[42];
@@ -648,9 +581,6 @@ public class Cube {
         this.cube[50] = temp;
     }
 
-    /**
-     * 2 DOWN rotation.
-     */
     public void downDouble() {
         char temp = this.cube[15];
         this.cube[15] = this.cube[33];
@@ -694,9 +624,6 @@ public class Cube {
         this.cube[51] = temp;
     }
 
-    /**
-     * REVERSE DOWN rotation.
-     */
     public void downReverse() {
         char temp = this.cube[15];
         this.cube[15] = this.cube[24];
@@ -729,74 +656,59 @@ public class Cube {
         this.cube[48] = temp;
     }
 
-    /**
-     * Resolved cube initialization.
-     */
     private void initializeCube() {
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 9; j++) {
-                char faclet_color;
+                char face;
                 switch (i) {
                     case 0:
-                        faclet_color = UP;
+                        face = UP;
                         break;
                     case 1:
-                        faclet_color = LEFT;
+                        face = LEFT;
                         break;
                     case 2:
-                        faclet_color = FRONT;
+                        face = FRONT;
                         break;
                     case 3:
-                        faclet_color = RIGHT;
+                        face = RIGHT;
                         break;
                     case 4:
-                        faclet_color = BACK;
+                        face = BACK;
                         break;
                     case 5:
-                        faclet_color = DOWN;
+                        face = DOWN;
                         break;
                     default:
-                        faclet_color = '?';
+                        face = '?';
                         break;
                 }
-                this.cube[(i * 9) + j] = faclet_color;
+                this.cube[(i * 9) + j] = face;
             }
         }
     }
 
-    /**
-     * Cube printing
-     */
     public void printCube() {
         System.out.println("");
-        /*
-        UP side.
-         */
         for (int i = 0; i < 3; i++) {
-            char val1 = this.cube[(i * 3)];
+            char val1 = this.cube[(i * 3) + 0];
             char val2 = this.cube[(i * 3) + 1];
             char val3 = this.cube[(i * 3) + 2];
             System.out.println("           [" + val1 + "][" + val2 + "][" + val3 + "]");
         }
         System.out.println("");
-        /*
-        LEFT, FRONT, RIGHT and BACK sides.
-         */
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 4; j++) {
-                char val1 = this.cube[9 + (i * 3) + (j * 9)];
+                char val1 = this.cube[9 + (i * 3) + (j * 9) + 0];
                 char val2 = this.cube[9 + (i * 3) + (j * 9) + 1];
                 char val3 = this.cube[9 + (i * 3) + (j * 9) + 2];
                 System.out.print(" [" + val1 + "][" + val2 + "][" + val3 + "]");
             }
             System.out.print("\n");
         }
-        /*
-        DOWN side.
-         */
-        System.out.println("");
+        System.out.println(""); //Print the white face
         for (int i = 0; i < 3; i++) {
-            char val1 = this.cube[45 + (i * 3)];
+            char val1 = this.cube[45 + (i * 3) + 0];
             char val2 = this.cube[45 + (i * 3) + 1];
             char val3 = this.cube[45 + (i * 3) + 2];
             System.out.println("           [" + val1 + "][" + val2 + "][" + val3 + "]");
@@ -804,9 +716,6 @@ public class Cube {
         System.out.println("");
     }
 
-    /**
-     * Return smallCube face.
-     */
     public char getFaceletColor(int facelet_index) {
         if (facelet_index >= 0 && facelet_index < 54) {
             return this.cube[facelet_index];
@@ -814,13 +723,9 @@ public class Cube {
         return '?';
     }
 
-    /**
-     * Randomizer.
-     */
-    public void scramble(int number_of_turns) {
-//        int number_of_turns = random.nextInt(20) + 20;
-//        number_of_turns = 20;
-        for (int i = 0; i < number_of_turns; i++) {
+    public void scramble(int turnsNumber) {
+
+        for (int i = 0; i < turnsNumber; i++) {
             int turn = this.random.nextInt(17) + 1;
             switch (turn) {
                 case 1:
@@ -884,7 +789,7 @@ public class Cube {
                     upReverse();
                     break;
                 case 16:
-                    System.out.println("DOWN");
+                    System.out.println("D");
                     down();
                     break;
                 case 17:
@@ -904,7 +809,8 @@ public class Cube {
 
     public void rotateByListTurns(List<Turn> turns) {
         for (Turn turn : turns) {
-            String turnNotation = turn.performTurn(this);
+            System.out.println(turn.performTurn(this));
+            printCube();
         }
     }
 }

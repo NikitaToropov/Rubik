@@ -3,7 +3,6 @@ import java.util.Random;
 import java.util.Stack;
 import java.util.concurrent.TimeUnit;
 
-
 public class IDAStarResolver {
     public static final Goal[] HUMAN_LIKE_DECOMPOSITION = {
             Goal.CROSS_W,
@@ -520,70 +519,6 @@ public class IDAStarResolver {
                 case THIRD_LAYER_CORNER_POSITIONS:
                     if (!CubeGoalsUtil.ThirdLayerCornerPositions(cube)) return false;
                     break;
-
-
-                case PPP1:
-                    if (!CubeGoalsUtil.PPP1(cube)) return false;
-                    break;
-                case PPP2:
-                    if (!CubeGoalsUtil.PPP2(cube)) return false;
-                    break;
-                case PPP3:
-                    if (!CubeGoalsUtil.PPP3(cube)) return false;
-                    break;
-                case PPP4:
-                    if (!CubeGoalsUtil.PPP4(cube)) return false;
-                    break;
-                case PPP5:
-                    if (!CubeGoalsUtil.PPP5(cube)) return false;
-                    break;
-                case PPP6:
-                    if (!CubeGoalsUtil.PPP6(cube)) return false;
-                    break;
-                case PPP7:
-                    if (!CubeGoalsUtil.PPP7(cube)) return false;
-                    break;
-                case PPP8:
-                    if (!CubeGoalsUtil.PPP8(cube)) return false;
-                    break;
-                case PPP9:
-                    if (!CubeGoalsUtil.PPP9(cube)) return false;
-                    break;
-                case PPP10:
-                    if (!CubeGoalsUtil.PPP10(cube)) return false;
-                    break;
-                case PPP11:
-                    if (!CubeGoalsUtil.PPP11(cube)) return false;
-                    break;
-                case PPP12:
-                    if (!CubeGoalsUtil.PPP12(cube)) return false;
-                    break;
-                case PPP13:
-                    if (!CubeGoalsUtil.PPP13(cube)) return false;
-                    break;
-                case PPP14:
-                    if (!CubeGoalsUtil.PPP14(cube)) return false;
-                    break;
-                case PPP15:
-                    if (!CubeGoalsUtil.PPP15(cube)) return false;
-                    break;
-                case PPP16:
-                    if (!CubeGoalsUtil.PPP16(cube)) return false;
-                    break;
-                case PPP17:
-                    if (!CubeGoalsUtil.PPP17(cube)) return false;
-                    break;
-                case PPP18:
-                    if (!CubeGoalsUtil.PPP18(cube)) return false;
-                    break;
-                case ALL_EDGES:
-                    if (!CubeGoalsUtil.allEdges(cube)) return false;
-                    break;
-                case ALL_CORNER_POSITIONS:
-                    if (!CubeGoalsUtil.allCornerPositions(cube)) return false;
-                    break;
-
-
                 case F2L1:
                     if (!CubeGoalsUtil.F2L1(cube)) return false;
                     break;
@@ -605,8 +540,6 @@ public class IDAStarResolver {
                 case THIRD_LAYER_1_CORNER:
                     if (!CubeGoalsUtil.thirdLayer1Corner(cube)) return false;
                     break;
-                case THIRD_LAYER_2_CORNER:
-                    if (!CubeGoalsUtil.thirdLayer2Corner(cube)) return false;
 
                 case SOLVED:
                     if (!CubeGoalsUtil.solved(cube)) return false;

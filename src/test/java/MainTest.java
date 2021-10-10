@@ -6,9 +6,15 @@ public class MainTest {
         Main.main(new String[0]);
     }
 
-    @Test(description = "Тест запуска с невалидным аргументами.")
+    @Test(description = "Тест запуска с невалидным аргументом.")
     public void testWithInvalid() {
         String[] args = {"invalid"};
+        Main.main(args);
+    }
+
+    @Test(description = "Тест запуска с 2мя невалиднымм аргументами.")
+    public void testWithTwoInvalid() {
+        String[] args = {"invalid", "invalid"};
         Main.main(args);
     }
 
@@ -39,6 +45,14 @@ public class MainTest {
     @Test(description = "Запуск отрицаетельным числом поворотов 20 поворотов.")
     public void testRandomMoves() {
         String[] args = {"-20"};
+        Main.main(args);
+    }
+
+
+    @Test(description = "Запуск с вводом проверяющего.")
+    public void testWithInput() {
+//        String[] args = {"U", "R2", "U", "R'"};
+        String[] args = {"D", "F", "U", "R'", "L2"};
         Main.main(args);
     }
 }

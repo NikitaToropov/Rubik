@@ -1,16 +1,3 @@
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *
- * ~~~~~ Jeffrey Martin                                                                    ~~~~~ *
- * ~~~~~ CS4341 Introduction to Artifical Intelligence                                     ~~~~~ *
- * ~~~~~ Professor Neil Heffernan                                                          ~~~~~ *
- * ~~~~~ October 24th, 2016                                                                ~~~~~ *
- * ~~~~~                                                                                   ~~~~~ *
- * ~~~~~ BSMS Project : Goal Oriented Rubiks Cube Solver with IDA*                         ~~~~~ *
- * ~~~~~ File: Goals.java                                                                  ~~~~~ *
- * ~~~~~ File Description                                                                  ~~~~~ *
- * ~~~~~~~ This enumeration defines constants representing all of the possible goals.      ~~~~~ *
- * ~~~~~~~ The goals are implemented in the Rubiks_Cube_Goals_V2.java class                ~~~~~ *
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-
 public enum Goal {
     SOLVED,
     PIECE1,
@@ -52,5 +39,5 @@ public enum Goal {
     F2L4,
     THIRD_LAYER_PARTIAL_INCONSISTENT_CROSS,
     THIRD_LAYER_PARTIAL_CONSISTENT_CROSS,
-    THIRD_LAYER_1_CORNER;
-};
+    THIRD_LAYER_1_CORNER
+}
